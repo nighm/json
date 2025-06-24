@@ -20,6 +20,7 @@ from .exception_handler import get_exception_handler
 from .validation import get_validator
 from .analysis import get_statistical_analyzer
 from .i18n import get_i18n_provider, get_text
+from .doc_generation import *
 
 __all__ = [
     # 日志服务
