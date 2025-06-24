@@ -1,0 +1,197 @@
+# {{ project_name }}
+
+{{ project_description }}
+
+## 功能特点
+
+- 跨平台支持（Windows/Linux/MacOS）
+- 完整的日志记录
+- 优雅的启动和停止
+- 信号处理
+- 资源自动清理
+- 配置管理
+- 单元测试覆盖
+- 代码质量保证
+
+## 项目结构
+
+```
+{{ project_name }}/
+├── src/                    # 源代码目录
+│   ├── __init__.py
+│   ├── main.py            # 主程序入口
+│   ├── config/            # 配置目录
+│   │   └── config.yaml    # 配置文件
+│   ├── core/              # 核心功能
+│   │   ├── __init__.py
+│   │   └── app.py        # 应用程序类
+│   ├── utils/             # 工具函数
+│   │   ├── __init__.py
+│   │   └── helpers.py    # 辅助函数
+│   └── api/              # API 接口
+│       ├── __init__.py
+│       └── routes.py     # 路由定义
+├── tests/                 # 测试目录
+│   ├── __init__.py
+│   ├── test_main.py      # 主程序测试
+│   ├── test_core/        # 核心功能测试
+│   │   ├── __init__.py
+│   │   └── test_app.py   # 应用程序测试
+│   └── test_utils/       # 工具函数测试
+│       ├── __init__.py
+│       └── test_helpers.py # 辅助函数测试
+├── docs/                  # 文档目录
+│   ├── README.md         # 项目文档
+│   ├── api/              # API 文档
+│   │   └── index.md      # API 索引
+│   └── guides/           # 使用指南
+│       └── getting-started.md # 入门指南
+├── scripts/               # 脚本目录
+│   ├── setup.py          # 环境设置脚本
+│   ├── install_deps.py   # 依赖安装脚本
+│   └── code_fixers/      # 代码修复工具
+│       ├── __init__.py
+│       └── auto_fix.py   # 自动修复脚本
+├── logs/                  # 日志目录
+│   └── app.log           # 应用日志
+├── .gitignore            # Git 忽略文件
+├── .pre-commit-config.yaml # 预提交配置
+├── requirements.txt       # 项目依赖
+├── requirements-dev.txt   # 开发依赖
+├── setup.py              # 安装脚本
+└── README.md             # 项目说明
+```
+
+## 环境要求
+
+- Python {{ python_version }} 或更高版本
+- 其他依赖项见 `requirements.txt`
+
+## 快速开始
+
+1. 克隆仓库：
+
+```bash
+git clone {{ repository_url }}
+cd {{ project_name }}
+```
+
+2. 创建虚拟环境：
+
+```bash
+# Windows
+python -m venv .venv
+.venv\Scripts\activate
+
+# Linux/MacOS
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+3. 安装依赖：
+
+```bash
+# 安装项目依赖
+pip install -r requirements.txt
+
+# 安装开发依赖
+pip install -r requirements-dev.txt
+```
+
+4. 运行程序：
+
+```bash
+# 基本运行
+python src/main.py
+
+# 指定配置文件
+python src/main.py --config config/custom.yaml
+
+# 设置日志级别
+python src/main.py --log-level DEBUG
+```
+
+## 开发指南
+
+### 代码风格
+
+- 遵循 PEP 8 规范
+- 使用 Black 进行代码格式化
+- 使用 isort 进行导入排序
+- 使用 Flake8 进行代码检查
+- 使用 Pylint 进行代码分析
+- 使用 MyPy 进行类型检查
+
+### 开发工具
+
+1. 安装预提交钩子：
+
+```bash
+pre-commit install
+```
+
+2. 运行代码检查：
+
+```bash
+# 运行所有检查
+pre-commit run --all-files
+
+# 运行特定检查
+pre-commit run black --all-files
+pre-commit run isort --all-files
+pre-commit run flake8 --all-files
+pre-commit run pylint --all-files
+pre-commit run mypy --all-files
+```
+
+3. 运行测试：
+
+```bash
+# 运行所有测试
+pytest
+
+# 运行特定测试
+pytest tests/test_main.py
+pytest tests/test_core/
+
+# 生成测试覆盖率报告
+pytest --cov=src tests/
+```
+
+### 提交规范
+
+- feat: 新功能
+- fix: 修复问题
+- docs: 文档修改
+- style: 代码格式修改
+- refactor: 代码重构
+- test: 测试用例修改
+- chore: 其他修改
+
+## 贡献指南
+
+1. Fork 项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'feat: Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 创建 Pull Request
+
+## 版本历史
+
+- 0.1.0
+  - 初始版本
+  - 基本功能实现
+  - 完整的测试覆盖
+
+## 许可证
+
+{{ license }}
+
+## 作者
+
+{{ author }}
+
+## 致谢
+
+- 感谢所有贡献者的付出
+- 感谢开源社区的支持 

@@ -1,0 +1,61 @@
+# 日志配置
+version: 1
+disable_existing_loggers: false
+
+# 格式化器配置
+formatters:
+  standard:
+    format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+  
+  detailed:
+    format: "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+# 处理器配置
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+  
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: detailed
+    filename: logs/app.log
+    maxBytes: 10485760  # 10MB
+    backupCount: 5
+    encoding: utf8
+  
+  error_file:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: detailed
+    filename: logs/error.log
+    maxBytes: 10485760  # 10MB
+    backupCount: 3
+    encoding: utf8
+
+# 根日志器配置
+root:
+  level: INFO
+  handlers: [console, file, error_file]
+
+# 特定模块日志器配置
+loggers:
+  src:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: false
+  
+  src.config:
+    level: INFO
+    handlers: [console, file]
+    propagate: false
+  
+  src.tools.jmeter:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: false 

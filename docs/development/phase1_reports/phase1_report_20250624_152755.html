@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一阶段重构分析报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Microsoft YaHei', Arial, sans-serif; margin: 20px; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .highlight { background-color: #f0f8ff; padding: 10px; border-radius: 3px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .warning { color: #ff6b6b; }
+        .success { color: #51cf66; }
+    </style>
+</head>
+<body>
+    <h1>第一阶段重构分析报告</h1>
+    <p>生成时间：2025-06-24 15:27:55</p>
+    
+    <div class="section">
+        <h2>📊 项目统计概览</h2>
+        <div class="highlight">
+            <p><strong>总文件数：</strong>36137</p>
+            <p><strong>Python文件数：</strong>181</p>
+            <p><strong>总代码行数：</strong>29910</p>
+            <p><strong>有效代码行数：</strong>23062</p>
+            <p><strong>注释行数：</strong>2295</p>
+            <p><strong>空行数：</strong>4553</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📁 按目录统计</h2>
+        <table>
+            <tr><th>目录</th><th>文件数</th><th>代码行数</th></tr>
+            <tr><td>authorization_manager.py</td><td>1</td><td>413</td></tr>
+            <tr><td>database_manager.py</td><td>1</td><td>277</td></tr>
+            <tr><td>debug_device_manager.py</td><td>1</td><td>46</td></tr>
+            <tr><td>debug_register_api copy.py</td><td>1</td><td>72</td></tr>
+            <tr><td>debug_register_api.py</td><td>1</td><td>72</td></tr>
+            <tr><td>debug_sn_mac_generation.py</td><td>1</td><td>113</td></tr>
+            <tr><td>demo_bulk_capacity.py</td><td>1</td><td>162</td></tr>
+            <tr><td>demo_improved_generator.py</td><td>1</td><td>223</td></tr>
+            <tr><td>register_param_tester.py</td><td>1</td><td>339</td></tr>
+            <tr><td>run_tests.py</td><td>1</td><td>180</td></tr>
+            <tr><td>scripts</td><td>36</td><td>9150</td></tr>
+            <tr><td>src</td><td>115</td><td>15758</td></tr>
+            <tr><td>test_device_identifier_system.py</td><td>1</td><td>267</td></tr>
+            <tr><td>test_jmx_vs_register.py</td><td>1</td><td>174</td></tr>
+            <tr><td>test_register_step_by_step.py</td><td>1</td><td>93</td></tr>
+            <tr><td>tests</td><td>17</td><td>2571</td></tr>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>🔗 项目架构思维导图</h2>
+        <div class="mermaid">
+graph TD
+    A[项目架构] --> B[src目录]
+    A --> C[scripts目录]
+    A --> D[tools目录]
+    A --> E[docs目录]
+    A --> F[其他文件]
+    
+    B --> B1[domain层]
+    B --> B2[application层]
+    B --> B3[infrastructure层]
+    B --> B4[interfaces层]
+    B --> B5[config层]
+    
+    B1 --> B1A[entities实体]
+    B1 --> B1B[services领域服务]
+    B1 --> B1C[value_objects值对象]
+    B1 --> B1D[strategy策略]
+    
+    B2 --> B2A[services应用服务]
+    B2 --> B2B[jmeter测试服务]
+    B2 --> B2C[monitor监控服务]
+    
+    B3 --> B3A[repositories仓储]
+    B3 --> B3B[jmeter执行器]
+    B3 --> B3C[report报告生成]
+    B3 --> B3D[analysis分析工具]
+    
+    B4 --> B4A[cli命令行接口]
+    B4 --> B4B[main主程序]
+    
+    B5 --> B5A[api配置]
+    B5 --> B5B[core核心配置]
+    B5 --> B5C[test测试配置]
+    
+    C --> C1[Python脚本]
+    C --> C2[其他脚本]
+    
+    D --> D1[jmeter工具]
+    D --> D2[redis工具]
+    D --> D3[其他工具]
+    
+    E --> E1[api文档]
+    E --> E2[design设计文档]
+    E --> E3[development开发文档]
+    E --> E4[requirements需求文档]
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>⚠️ 重复代码检测</h2>
+        <table>
+            <tr><th>重复模式</th><th>出现次数</th><th>文件列表</th></tr>
+            <tr><td>函数定义:__init__</td><td>89</td><td>authorization_manager.py, database_manager.py, demo_improved_generator.py ... (共89个文件)</td></tr>
+            <tr><td>函数定义:main</td><td>47</td><td>authorization_manager.py, database_manager.py, register_param_tester.py ... (共47个文件)</td></tr>
+            <tr><td>主程序入口:if __name__ == "__main__":</td><td>36</td><td>authorization_manager.py, database_manager.py, debug_register_api copy.py ... (共36个文件)</td></tr>
+            <tr><td>主程序入口:if __name__ == '__main__':</td><td>36</td><td>debug_device_manager.py, debug_sn_mac_generation.py, demo_improved_generator.py ... (共36个文件)</td></tr>
+            <tr><td>函数定义:close</td><td>9</td><td>authorization_manager.py, database_manager.py, scripts\batch_insert_devices.py ... (共9个文件)</td></tr>
+            <tr><td>函数定义:run_jmeter_test</td><td>7</td><td>scripts\api_test_flow.py, scripts\batch_login_test.py, scripts\batch_register_test.py ... (共7个文件)</td></tr>
+            <tr><td>函数定义:setup_method</td><td>6</td><td>tests\application\services\test_performance_test_service.py, tests\infrastructure\jmeter\test_jmeter_executor.py, tests\interfaces\cli\test_performance_test_cli.py ... (共6个文件)</td></tr>
+            <tr><td>函数定义:modify_jmx_threads</td><td>5</td><td>scripts\batch_login_test.py, scripts\jmeter_batch_register.py, scripts\jmeter_batch_register_enhanced copy.py ... (共5个文件)</td></tr>
+            <tr><td>函数定义:analyze_jtl_file</td><td>5</td><td>scripts\batch_login_test.py, scripts\jmeter_batch_register.py, scripts\jmeter_batch_register_enhanced copy.py ... (共5个文件)</td></tr>
+            <tr><td>函数定义:load_config</td><td>4</td><td>scripts\api_test_flow.py, scripts\generate_jmeter_test.py, scripts\generate_uuid.py ... (共4个文件)</td></tr>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>🎯 重构建议</h2>
+        <ul>
+            <li><strong>高优先级：</strong>关注代码行数最多的目录，优先重构</li>
+            <li><strong>中优先级：</strong>处理重复代码模式，提取公共逻辑</li>
+            <li><strong>低优先级：</strong>优化注释和空行比例</li>
+        </ul>
+    </div>
+</body>
+<script>
+    mermaid.initialize({{ startOnLoad: true }});
+</script>
+</html>

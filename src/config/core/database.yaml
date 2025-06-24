@@ -1,0 +1,50 @@
+# 数据库配置文件
+# 包含Redis、MySQL等数据库连接配置
+
+# Redis配置
+redis:
+  host: "192.168.24.45"
+  port: 6389
+  password: "Wjc4QRkz198a"
+  db: 0
+  timeout: 30
+  retry_count: 3
+  captcha_prefix: "captcha_codes:"
+  
+  # 连接池配置
+  pool:
+    max_connections: 10
+    min_connections: 2
+    connection_timeout: 30
+
+# MySQL配置（设备信息数据库）
+mysql:
+  host: "192.168.24.45"
+  port: 3307
+  username: "root"
+  password: "At6mj*1ygb2"
+  database: "yangguan"  # 设备信息数据库
+  charset: "utf8mb4"
+  
+  # 连接池配置
+  pool:
+    max_connections: 20
+    min_connections: 5
+    connection_timeout: 30
+
+# 数据库通用配置
+common:
+  # 连接超时时间
+  connection_timeout: 30
+  
+  # 查询超时时间
+  query_timeout: 60
+  
+  # 重试次数
+  retry_count: 3
+  
+  # 是否启用连接池
+  enable_pool: true
+  
+  # 日志级别
+  log_level: "INFO" 

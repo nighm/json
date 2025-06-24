@@ -1,0 +1,41 @@
+# 项目核心配置文件
+# 包含服务器连接、数据库、API等基础配置
+
+# 服务器配置
+server:
+  url: "192.168.24.45"
+  port: 8080
+  protocol: "http"
+
+# Redis配置
+redis:
+  host: "192.168.24.45"
+  port: 6389
+  password: "Wjc4QRkz198a"
+  captcha_prefix: "captcha_codes:"
+
+# API配置
+api:
+  uuid_api: "/prod-api/captchaImage"
+  login_api: "/prod-api/login"
+  login_username: "super"
+  login_password: "Ujz4o8cWl9PC01879XItga=="
+
+# 测试API列表
+test_apis:
+  - "/protector/heartbeat"
+  - "/prod-api/dashboard/device/top5/online/school"
+  - "/prod-api/dashboard/device/top5/online/platform"
+
+# 环境配置
+environment:
+  debug: false
+  log_level: "INFO"
+  timeout: 30
+
+# 文件路径配置
+paths:
+  base_dir: "src"
+  tools_dir: "src/tools"
+  results_dir: "src/tools/jmeter/results"
+  reports_dir: "src/tools/jmeter/results/reports" 

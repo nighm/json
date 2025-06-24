@@ -1,0 +1,37 @@
+# 使用 Nginx 1.25 作为基础镜像
+FROM nginx:1.25-alpine
+
+# 安装依赖
+RUN apk add --no-cache \
+    curl \
+    tzdata
+
+# 设置时区
+ENV TZ=Asia/Shanghai
+
+# 创建必要的目录
+RUN mkdir -p /var/cache/nginx \
+    && mkdir -p /var/log/nginx \
+    && mkdir -p /app/static \
+    && mkdir -p /app/media
+
+# 复制配置文件
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# 设置权限
+RUN chown -R nginx:nginx /var/cache/nginx \
+    && chown -R nginx:nginx /var/log/nginx \
+    && chown -R nginx:nginx /app
+
+# 切换到非 root 用户
+USER nginx
+
+# 暴露端口
+EXPOSE 80
+
+# 设置健康检查
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/health || exit 1
+
+# 设置入口点
+ENTRYPOINT ["nginx", "-g", "daemon off;"] 

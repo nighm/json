@@ -1,0 +1,96 @@
+# 测试用例配置文件
+# 包含各种测试场景的配置
+
+# 性能测试用例
+performance_tests:
+  # 心跳接口测试
+  heartbeat:
+    name: "心跳接口测试"
+    description: "测试终端心跳接口的性能表现"
+    jmx_file: "heartbeat_test.jmx"
+    default_threads: [100, 500, 1000, 1500]
+    default_loops: [10, 100, 300, 500]
+    success_threshold: 95.0
+    max_response_time: 2000.0
+    
+  # 注册接口测试
+  register:
+    name: "终端注册接口测试"
+    description: "测试终端注册接口的性能表现"
+    jmx_file: "register_test.jmx"
+    default_threads: [50, 100, 200, 500]
+    default_loops: [10, 50, 100, 200]
+    success_threshold: 95.0
+    max_response_time: 5000.0
+    
+  # 获取策略接口测试
+  strategy_get:
+    name: "获取策略接口测试"
+    description: "测试获取终端策略接口的性能表现"
+    jmx_file: "strategy_test.jmx"
+    default_threads: [100, 300, 500, 1000]
+    default_loops: [10, 50, 100, 200]
+    success_threshold: 95.0
+    max_response_time: 3000.0
+
+# 功能测试用例
+functional_tests:
+  # 登录流程测试
+  login_flow:
+    name: "登录流程测试"
+    description: "测试完整的终端登录流程"
+    steps:
+      - "register"
+      - "strategy_get"
+      - "device_info_get"
+      - "custom_config_info"
+      - "startup_pic"
+      - "mqtt_url"
+    expected_result: "所有步骤执行成功"
+    
+  # 心跳流程测试
+  heartbeat_flow:
+    name: "心跳流程测试"
+    description: "测试终端心跳流程"
+    steps:
+      - "heartbeat"
+    expected_result: "心跳接口响应正常"
+
+# 测试环境配置
+environments:
+  # 开发环境
+  development:
+    base_url: "http://192.168.24.45:8080"
+    timeout: 30
+    retry_count: 3
+    
+  # 测试环境
+  testing:
+    base_url: "http://test-server:8080"
+    timeout: 60
+    retry_count: 5
+    
+  # 生产环境
+  production:
+    base_url: "http://prod-server:8080"
+    timeout: 120
+    retry_count: 10
+
+# 测试数据配置
+test_data:
+  # 设备信息模板
+  device_templates:
+    default:
+      deviceName: "robot"
+      brand: "robot"
+      customerCode: "101"
+      deviceType: "PC"
+      operatingSystem: "robot"
+      virtualMachine: false
+      
+  # 参数生成规则
+  parameter_generation:
+    sn_pattern: "AAAAAA_{index}"
+    mac_pattern: "AAAAAA_{index}"
+    ip_pattern: "1.1.1.{index}"
+    start_index: 1 

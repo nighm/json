@@ -1,0 +1,103 @@
+# JMeter测试配置
+# 包含JMeter执行、测试参数、报告生成等配置
+
+# JMeter基础配置
+jmeter:
+  # JMeter语言设置
+  language: "zh_CN"
+  
+  # JMeter可执行文件路径
+  jmeter_bin: "D:/data/work/json/src/tools/jmeter/bin/jmeter.bat"
+  
+  # 默认JMX文件路径
+  default_jmx: "src/tools/jmeter/api_cases/register_test.jmx"
+  
+  # 默认测试名称
+  default_test_name: "接口性能测试"
+
+# 报告配置
+report:
+  # 报告标题
+  title: "性能测试报告"
+  
+  # 日期格式
+  date_format: "%Y-%m-%d %H:%M:%S"
+  
+  # CSV文件编码
+  csv_encoding: "utf-8"
+  
+  # 报告文件命名格式
+  filename_format: "性能接口测试_对外整合版_{interface}_{date}.csv"
+
+# 测试参数配置
+test:
+  # 线程数数组，支持多组并发批量测试
+  thread_counts: [1, 10]
+  
+  # 循环次数数组，支持多组批量测试
+  loop_counts: [1, 2]
+  
+  # 默认启动时间（秒）
+  ramp_up_time: 1
+  
+  # 默认超时时间（秒）
+  timeout: 30
+
+# 输出目录配置
+output:
+  # 基础输出目录
+  base_dir: "src/tools/jmeter/results"
+  
+  # 报告子目录
+  report_dir: "reports"
+  
+  # 日志子目录
+  log_dir: "logs"
+  
+  # JTL文件子目录
+  jtl_dir: "jtl"
+
+# 接口测试配置
+interfaces:
+  # 心跳接口
+  heartbeat:
+    name: "心跳接口"
+    url: "/protector/heartbeat"
+    method: "POST"
+    parameters:
+      deviceId: "设备deviceId"
+      locate: "guestos"
+  
+  # 注册接口
+  register:
+    name: "终端注册接口"
+    url: "/protector/register"
+    method: "POST"
+    parameters:
+      address: ""
+      deviceId: ""
+      deviceName: "robot"
+      ip: "1.1.1.1"
+      locate: "guestos"
+      mac: "AAAAAA_6"
+      params:
+        alone: true
+        bootTime: ""
+        brand: "robot"
+        customerCode: "101"
+        deviceSerialNumber: "AAAAAA_6"
+        deviceType: "PC"
+        hardDisk: "robot"
+        kseUser: ""
+        lastShutdownTime: ""
+        macs: ""
+        mainBoard: "robot"
+        memory: "robot"
+        model: "robot"
+        operatingSystem: "robot"
+        outsideIp: ""
+        processor: "robot"
+        protectorVersion: "robot"
+        remark: "robot"
+        starter2Version: "robot"
+        virtualMachine: false 

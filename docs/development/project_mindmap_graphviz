@@ -1,0 +1,236 @@
+digraph "项目脑图" {
+	bgcolor=white fontname="Microsoft YaHei" fontsize=16 rankdir=LR
+	A [label="项目架构" fillcolor="#e3f2fd" shape=ellipse style=filled]
+	B [label="src目录" fillcolor="#bbdefb" shape=box style=filled]
+	A -> B
+	"B___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B -> "B___init__.py"
+	B_application [label=application fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_application
+	"B_application___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_application -> "B_application___init__.py"
+	"B_application_auto_login_and_test_service.py" [label="auto_login_and_test_service.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_application -> "B_application_auto_login_and_test_service.py"
+	B_application_jmeter [label=jmeter fillcolor="#fff9c4" shape=note style=filled]
+	B_application -> B_application_jmeter
+	B_application_monitor [label=monitor fillcolor="#fff9c4" shape=note style=filled]
+	B_application -> B_application_monitor
+	B_application_services [label=services fillcolor="#fff9c4" shape=note style=filled]
+	B_application -> B_application_services
+	B_config [label=config fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_config
+	"B_config___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_config -> "B_config___init__.py"
+	B_config_api [label=api fillcolor="#fff9c4" shape=note style=filled]
+	B_config -> B_config_api
+	"B_config_config_manager.py" [label="config_manager.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_config -> "B_config_config_manager.py"
+	B_config_core [label=core fillcolor="#fff9c4" shape=note style=filled]
+	B_config -> B_config_core
+	B_config_test [label=test fillcolor="#fff9c4" shape=note style=filled]
+	B_config -> B_config_test
+	B_domain [label=domain fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_domain
+	"B_domain___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> "B_domain___init__.py"
+	B_domain_entities [label=entities fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> B_domain_entities
+	B_domain_jmeter [label=jmeter fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> B_domain_jmeter
+	B_domain_monitor [label=monitor fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> B_domain_monitor
+	B_domain_services [label=services fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> B_domain_services
+	B_domain_strategy [label=strategy fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> B_domain_strategy
+	B_domain_value_objects [label=value_objects fillcolor="#fff9c4" shape=note style=filled]
+	B_domain -> B_domain_value_objects
+	B_infrastructure [label=infrastructure fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_infrastructure
+	"B_infrastructure___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_infrastructure -> "B_infrastructure___init__.py"
+	B_infrastructure_cross_cutting [label=cross_cutting fillcolor="#fff9c4" shape=note style=filled]
+	B_infrastructure -> B_infrastructure_cross_cutting
+	B_infrastructure_external [label=external fillcolor="#fff9c4" shape=note style=filled]
+	B_infrastructure -> B_infrastructure_external
+	B_infrastructure_persistence [label=persistence fillcolor="#fff9c4" shape=note style=filled]
+	B_infrastructure -> B_infrastructure_persistence
+	B_infrastructure_services [label=services fillcolor="#fff9c4" shape=note style=filled]
+	B_infrastructure -> B_infrastructure_services
+	B_interfaces [label=interfaces fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_interfaces
+	"B_interfaces___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_interfaces -> "B_interfaces___init__.py"
+	B_interfaces_cli [label=cli fillcolor="#fff9c4" shape=note style=filled]
+	B_interfaces -> B_interfaces_cli
+	"B_interfaces_main_auto_login_and_test copy.py" [label="main_auto_login_and_test copy.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_interfaces -> "B_interfaces_main_auto_login_and_test copy.py"
+	"B_interfaces_main_auto_login_and_test.py" [label="main_auto_login_and_test.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_interfaces -> "B_interfaces_main_auto_login_and_test.py"
+	B_tools [label=tools fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_tools
+	"B_tools___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> "B_tools___init__.py"
+	"B_tools_create_parametrized_jmx.py" [label="create_parametrized_jmx.py" fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> "B_tools_create_parametrized_jmx.py"
+	B_tools_curl [label=curl fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_curl
+	B_tools_generators [label=generators fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_generators
+	B_tools_httpie [label=httpie fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_httpie
+	B_tools_java [label=java fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_java
+	B_tools_jmeter [label=jmeter fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_jmeter
+	B_tools_monitor [label=monitor fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_monitor
+	B_tools_newman [label=newman fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_newman
+	B_tools_node [label="node" fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_node
+	B_tools_nodejs [label=nodejs fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_nodejs
+	B_tools_postman [label=postman fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_postman
+	B_tools_redis [label=redis fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_redis
+	B_tools_syncthing [label=syncthing fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> B_tools_syncthing
+	"B_tools_versions.md" [label="versions.md" fillcolor="#fff9c4" shape=note style=filled]
+	B_tools -> "B_tools_versions.md"
+	B_utils [label=utils fillcolor="#e1bee7" shape=folder style=filled]
+	B -> B_utils
+	C [label="scripts目录" fillcolor="#bbdefb" shape=box style=filled]
+	A -> C
+	"C___init__.py" [label="__init__.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C___init__.py"
+	"C_analyze_jtl_timing.py" [label="analyze_jtl_timing.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_analyze_jtl_timing.py"
+	"C_api_test_flow.py" [label="api_test_flow.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_api_test_flow.py"
+	"C_batch_insert_devices.py" [label="batch_insert_devices.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_batch_insert_devices.py"
+	"C_batch_login_test.py" [label="batch_login_test.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_batch_login_test.py"
+	"C_batch_register_test.py" [label="batch_register_test.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_batch_register_test.py"
+	"C_enhanced_hardware_monitoring.py" [label="enhanced_hardware_monitoring.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_enhanced_hardware_monitoring.py"
+	"C_excel_to_csv.py" [label="excel_to_csv.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_excel_to_csv.py"
+	"C_generate_external_report.py" [label="generate_external_report.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_external_report.py"
+	"C_generate_internal_analysis_report.py" [label="generate_internal_analysis_report.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_internal_analysis_report.py"
+	"C_generate_jmeter_test.py" [label="generate_jmeter_test.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_jmeter_test.py"
+	"C_generate_meeting_import_csv.py" [label="generate_meeting_import_csv.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_meeting_import_csv.py"
+	"C_generate_meeting_schedule.py" [label="generate_meeting_schedule.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_meeting_schedule.py"
+	"C_generate_project_mindmap_graphviz.py" [label="generate_project_mindmap_graphviz.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_project_mindmap_graphviz.py"
+	"C_generate_uuid.py" [label="generate_uuid.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_generate_uuid.py"
+	"C_init_project.py" [label="init_project.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_init_project.py"
+	"C_jmeter_auto_test.py" [label="jmeter_auto_test.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_auto_test.py"
+	"C_jmeter_batch_register.py" [label="jmeter_batch_register.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_batch_register.py"
+	"C_jmeter_batch_register_enhanced copy.py" [label="jmeter_batch_register_enhanced copy.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_batch_register_enhanced copy.py"
+	"C_jmeter_batch_register_enhanced.py" [label="jmeter_batch_register_enhanced.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_batch_register_enhanced.py"
+	"C_jmeter_consistency_verification.py" [label="jmeter_consistency_verification.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_consistency_verification.py"
+	"C_jmeter_csv_report.py" [label="jmeter_csv_report.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_csv_report.py"
+	"C_jmeter_plan_filter.py" [label="jmeter_plan_filter.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_plan_filter.py"
+	"C_jmeter_report_manager.py" [label="jmeter_report_manager.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_report_manager.py"
+	"C_jmeter_result_filter_and_report.py" [label="jmeter_result_filter_and_report.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_jmeter_result_filter_and_report.py"
+	"C_performance_stress_test_plan.py" [label="performance_stress_test_plan.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_performance_stress_test_plan.py"
+	"C_performance_test_orchestrator.py" [label="performance_test_orchestrator.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_performance_test_orchestrator.py"
+	"C_phase1_reconnaissance.py" [label="phase1_reconnaissance.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_phase1_reconnaissance.py"
+	"C_project_mindmap_to_png.py" [label="project_mindmap_to_png.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_project_mindmap_to_png.py"
+	C_python [label=python fillcolor="#e1bee7" shape=folder style=filled]
+	C -> C_python
+	"C_python_fix_infrastructure_structure.py" [label="fix_infrastructure_structure.py" fillcolor="#fff9c4" shape=note style=filled]
+	C_python -> "C_python_fix_infrastructure_structure.py"
+	"C_python_refactor_infrastructure.py" [label="refactor_infrastructure.py" fillcolor="#fff9c4" shape=note style=filled]
+	C_python -> "C_python_refactor_infrastructure.py"
+	"C_read_excel.py" [label="read_excel.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_read_excel.py"
+	"C_split_csv_to_parts.py" [label="split_csv_to_parts.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_split_csv_to_parts.py"
+	"C_test_redis_connection.py" [label="test_redis_connection.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_test_redis_connection.py"
+	"C_test_single_part.py" [label="test_single_part.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_test_single_part.py"
+	"C_test_uuid.py" [label="test_uuid.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_test_uuid.py"
+	"C_update_config_references.py" [label="update_config_references.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_update_config_references.py"
+	"C_update_jmx_files.py" [label="update_jmx_files.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_update_jmx_files.py"
+	"C_verify_hardware_monitoring.py" [label="verify_hardware_monitoring.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_verify_hardware_monitoring.py"
+	"C_verify_parts.py" [label="verify_parts.py" fillcolor="#fff9c4" shape=note style=filled]
+	C -> "C_verify_parts.py"
+	D [label="tools目录" fillcolor="#bbdefb" shape=box style=filled]
+	A -> D
+	"D_install_performance_tools.ps1" [label="install_performance_tools.ps1" fillcolor="#fff9c4" shape=note style=filled]
+	D -> "D_install_performance_tools.ps1"
+	"D_install_performance_tools.sh" [label="install_performance_tools.sh" fillcolor="#fff9c4" shape=note style=filled]
+	D -> "D_install_performance_tools.sh"
+	E [label="docs目录" fillcolor="#bbdefb" shape=box style=filled]
+	A -> E
+	E_api [label=api fillcolor="#e1bee7" shape=folder style=filled]
+	E -> E_api
+	"E_api_db_query_cli_interface.md" [label="db_query_cli_interface.md" fillcolor="#fff9c4" shape=note style=filled]
+	E_api -> "E_api_db_query_cli_interface.md"
+	"E_config_system_optimization.md" [label="config_system_optimization.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_config_system_optimization.md"
+	"E_db_query_cli_project_summary.md" [label="db_query_cli_project_summary.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_db_query_cli_project_summary.md"
+	"E_ddd_interface_layer_analysis.md" [label="ddd_interface_layer_analysis.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_ddd_interface_layer_analysis.md"
+	E_design [label=design fillcolor="#e1bee7" shape=folder style=filled]
+	E -> E_design
+	"E_design_db_query_cli_design.md" [label="db_query_cli_design.md" fillcolor="#fff9c4" shape=note style=filled]
+	E_design -> "E_design_db_query_cli_design.md"
+	E_development [label=development fillcolor="#e1bee7" shape=folder style=filled]
+	E -> E_development
+	"E_development_db_query_cli_development.md" [label="db_query_cli_development.md" fillcolor="#fff9c4" shape=note style=filled]
+	E_development -> "E_development_db_query_cli_development.md"
+	E_development_phase1_reports [label=phase1_reports fillcolor="#fff9c4" shape=note style=filled]
+	E_development -> E_development_phase1_reports
+	"E_development_project_mindmap.md" [label="project_mindmap.md" fillcolor="#fff9c4" shape=note style=filled]
+	E_development -> "E_development_project_mindmap.md"
+	"E_development_project_mindmap.mmd" [label="project_mindmap.mmd" fillcolor="#fff9c4" shape=note style=filled]
+	E_development -> "E_development_project_mindmap.mmd"
+	E_development_project_mindmap_graphviz [label=project_mindmap_graphviz fillcolor="#fff9c4" shape=note style=filled]
+	E_development -> E_development_project_mindmap_graphviz
+	"E_development_refactor_plan.md" [label="refactor_plan.md" fillcolor="#fff9c4" shape=note style=filled]
+	E_development -> "E_development_refactor_plan.md"
+	"E_development_plan.md" [label="development_plan.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_development_plan.md"
+	"E_infrastructure_refactor_summary.md" [label="infrastructure_refactor_summary.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_infrastructure_refactor_summary.md"
+	"E_performance_tools_integration.md" [label="performance_tools_integration.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_performance_tools_integration.md"
+	"E_performance_tools_usage.md" [label="performance_tools_usage.md" fillcolor="#fff9c4" shape=note style=filled]
+	E -> "E_performance_tools_usage.md"
+	E_requirements [label=requirements fillcolor="#e1bee7" shape=folder style=filled]
+	E -> E_requirements
+	"E_requirements_db_query_cli_requirements.md" [label="db_query_cli_requirements.md" fillcolor="#fff9c4" shape=note style=filled]
+	E_requirements -> "E_requirements_db_query_cli_requirements.md"
+}

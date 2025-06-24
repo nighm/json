@@ -1,0 +1,156 @@
+# API端点配置文件
+# 包含所有API接口的定义和测试用例配置
+
+# 基础配置
+base_url: "http://192.168.24.45:8080"
+timeout: 30
+retry_count: 3
+
+# API端点定义
+endpoints:
+  # 终端注册/登录接口
+  register:
+    url: "/protector/register"
+    method: "POST"
+    description: "终端注册/登录接口"
+    required_params:
+      - "deviceId"
+      - "deviceName"
+      - "ip"
+      - "locate"
+      - "mac"
+    optional_params:
+      - "address"
+    parameters:
+      address: ""
+      deviceId: ""
+      deviceName: "robot"
+      ip: "1.1.1.1"
+      locate: "guestos"
+      mac: "AAAAAA_6"
+      params:
+        alone: true
+        bootTime: ""
+        brand: "robot"
+        customerCode: "101"
+        deviceSerialNumber: "AAAAAA_6"
+        deviceType: "PC"
+        hardDisk: "robot"
+        kseUser: ""
+        lastShutdownTime: ""
+        macs: ""
+        mainBoard: "robot"
+        memory: "robot"
+        model: "robot"
+        operatingSystem: "robot"
+        outsideIp: ""
+        processor: "robot"
+        protectorVersion: "robot"
+        remark: "robot"
+        starter2Version: "robot"
+        virtualMachine: false
+
+  # 终端心跳接口
+  heartbeat:
+    url: "/protector/heartbeat"
+    method: "POST"
+    description: "终端心跳接口"
+    required_params:
+      - "deviceId"
+      - "locate"
+    parameters:
+      deviceId: "设备deviceId"
+      locate: "guestos"
+
+  # 获取终端策略
+  strategy_get:
+    url: "/protector/strategy/get"
+    method: "POST"
+    description: "获取终端策略"
+    required_params:
+      - "deviceId"
+    parameters:
+      deviceId: "设备deviceId"
+
+  # 获取终端设备信息
+  device_info_get:
+    url: "/protector/device/info/get"
+    method: "POST"
+    description: "获取终端设备信息"
+    required_params:
+      - "deviceId"
+    parameters:
+      deviceId: "设备deviceId"
+
+  # 获取终端品牌设置
+  custom_config_info:
+    url: "/protector/custom/config/info"
+    method: "POST"
+    description: "获取终端品牌设置"
+    required_params:
+      - "deviceId"
+    parameters:
+      deviceId: "设备deviceId"
+
+  # 获取终端logo设置
+  startup_pic:
+    url: "/protector/device/startUp/pic2"
+    method: "POST"
+    description: "获取终端logo设置"
+    required_params:
+      - "deviceId"
+    parameters:
+      deviceId: "设备deviceId"
+
+  # 获取MQTT服务器地址
+  mqtt_url:
+    url: "/protector/mqtt/url"
+    method: "POST"
+    description: "获取MQTT服务器地址"
+    required_params: []
+    parameters: {}
+
+# 测试用例配置
+test_cases:
+  # 登录流程测试用例
+  login_flow:
+    - "register"
+    - "strategy_get"
+    - "device_info_get"
+    - "custom_config_info"
+    - "startup_pic"
+    - "mqtt_url"
+  
+  # 心跳流程测试用例
+  heartbeat_flow:
+    - "heartbeat"
+  
+  # 单接口测试用例
+  single_tests:
+    register: "终端注册接口测试"
+    heartbeat: "心跳接口测试"
+    strategy_get: "获取策略接口测试"
+    device_info_get: "获取设备信息接口测试"
+    custom_config_info: "获取品牌设置接口测试"
+    startup_pic: "获取logo设置接口测试"
+    mqtt_url: "获取MQTT地址接口测试"
+
+# 参数生成规则
+parameter_rules:
+  # SN号生成规则
+  sn_generation:
+    pattern: "AAAAAA_{index}"
+    start_index: 1
+    unique: true
+  
+  # MAC地址生成规则
+  mac_generation:
+    pattern: "AAAAAA_{index}"
+    start_index: 1
+    unique: true
+  
+  # IP地址生成规则
+  ip_generation:
+    pattern: "1.1.1.{index}"
+    start_index: 1
+    unique: false  # IP地址可以相同 
