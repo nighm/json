@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+      <title>protector</title>
+      <meta charset="utf-8" />
+      <style>@charset "UTF-8";
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(255, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+  font-size: 13px;
+  line-height: 25px;
+  color: #393838;
+  position: relative;
+}
+
+table {
+  margin: 10px 0 15px 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 3px 10px;
+}
+
+th {
+  padding: 5px 10px;
+}
+
+a, a:link, a:visited {
+  color: #34495e;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #59d69d;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+p {
+  padding-left: 10px;
+  margin-bottom: 9px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #404040;
+  line-height: 36px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 28px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h3 {
+  clear: both;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-left: 3px solid #59d69d;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+hr {
+  margin: 0 0 19px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+blockquote {
+  padding: 13px 13px 21px 15px;
+  margin-bottom: 18px;
+  font-family: georgia, serif;
+  font-style: italic;
+}
+
+blockquote:before {
+  font-size: 40px;
+  margin-left: -10px;
+  font-family: georgia, serif;
+  color: #eee;
+}
+
+blockquote p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+
+code {
+  background-color: #fee9cc;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 1px 3px;
+  font-size: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+pre {
+  display: block;
+  padding: 14px;
+  margin: 0 0 18px;
+  line-height: 16px;
+  font-size: 11px;
+  border: 1px solid #d9d9d9;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #f6f6f6;
+}
+
+pre code {
+  background-color: #f6f6f6;
+  color: #737373;
+  font-size: 11px;
+  padding: 0;
+}
+
+sup {
+  font-size: 0.83em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+* {
+  -webkit-print-color-adjust: exact;
+}
+
+@media print {
+  body,
+  code,
+  pre code,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black;
+  }
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+.table-of-contents {
+  position: fixed;
+  top: 61px;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 260px;
+}
+
+.table-of-contents > ul > li > a {
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.table-of-contents ul {
+  overflow: auto;
+  margin: 0px;
+  height: 100%;
+  padding: 0px 0px;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.table-of-contents ul li {
+  padding-left: 20px;
+}
+
+.table-of-contents a {
+  padding: 2px 0px;
+  display: block;
+  text-decoration: none;
+}
+
+.content-right {
+  max-width: 700px;
+  margin-left: 290px;
+  padding-left: 70px;
+  flex-grow: 1;
+}
+.content-right h2:target {
+  padding-top: 80px;
+}
+
+body > p {
+  margin-left: 30px;
+}
+
+body > table {
+  margin-left: 30px;
+}
+
+body > pre {
+  margin-left: 30px;
+}
+
+.curProject {
+  position: fixed;
+  top: 20px;
+  font-size: 25px;
+  color: black;
+  margin-left: -240px;
+  width: 240px;
+  padding: 5px;
+  line-height: 25px;
+  box-sizing: border-box;
+}
+
+.g-doc {
+  margin-top: 56px;
+  padding-top: 24px;
+  display: flex;
+}
+
+.curproject-name {
+  font-size: 42px;
+}
+
+.m-header {
+  background: #32363a;
+  height: 56px;
+  line-height: 56px;
+  padding-left: 60px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.m-header .title {
+  font-size: 22px;
+  color: #fff;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  margin-left: 16px;
+  padding: 0;
+  line-height: 56px;
+  border: none;
+}
+.m-header .nav {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  right: 32px;
+  top: 0;
+}
+.m-header .nav a {
+  color: #fff;
+  margin-left: 16px;
+  padding: 8px;
+  transition: color .2s;
+}
+.m-header .nav a:hover {
+  color: #59d69d;
+}
+
+.m-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*# sourceMappingURL=defaultTheme.css.map */
+</style>
+      </head>
+      <body>
+        <div class="m-header">
+          <a href="#" style="display: inherit;"><svg class="svg" width="32px" height="32px" viewBox="0 0 64 64" version="1.1"><title>Icon</title><desc>Created with Sketch.</desc><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1"><stop stop-color="#FFFFFF" offset="0%"></stop><stop stop-color="#F2F2F2" offset="100%"></stop></linearGradient><circle id="path-2" cx="31.9988602" cy="31.9988602" r="2.92886048"></circle><filter x="-85.4%" y="-68.3%" width="270.7%" height="270.7%" filterUnits="objectBoundingBox" id="filter-3"><feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.159703351 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="大屏幕"><g id="Icon"><circle id="Oval-1" fill="url(#linearGradient-1)" cx="32" cy="32" r="32"></circle><path d="M36.7078009,31.8054514 L36.7078009,51.7110548 C36.7078009,54.2844537 34.6258634,56.3695395 32.0579205,56.3695395 C29.4899777,56.3695395 27.4099998,54.0704461 27.4099998,51.7941246 L27.4099998,31.8061972 C27.4099998,29.528395 29.4909575,27.218453 32.0589004,27.230043 C34.6268432,27.241633 36.7078009,29.528395 36.7078009,31.8054514 Z" id="blue" fill="#2359F1" fill-rule="nonzero"></path><path d="M45.2586091,17.1026914 C45.2586091,17.1026914 45.5657231,34.0524383 45.2345291,37.01141 C44.9033351,39.9703817 43.1767091,41.6667796 40.6088126,41.6667796 C38.040916,41.6667796 35.9609757,39.3676862 35.9609757,37.0913646 L35.9609757,17.1034372 C35.9609757,14.825635 38.0418959,12.515693 40.6097924,12.527283 C43.177689,12.538873 45.2586091,14.825635 45.2586091,17.1026914 Z" id="green" fill="#57CF27" fill-rule="nonzero" transform="translate(40.674608, 27.097010) rotate(60.000000) translate(-40.674608, -27.097010) "></path><path d="M28.0410158,17.0465598 L28.0410158,36.9521632 C28.0410158,39.525562 25.9591158,41.6106479 23.3912193,41.6106479 C20.8233227,41.6106479 18.7433824,39.3115545 18.7433824,37.035233 L18.7433824,17.0473055 C18.7433824,14.7695034 20.8243026,12.4595614 23.3921991,12.4711513 C25.9600956,12.4827413 28.0410158,14.7695034 28.0410158,17.0465598 Z" id="red" fill="#FF561B" fill-rule="nonzero" transform="translate(23.392199, 27.040878) rotate(-60.000000) translate(-23.392199, -27.040878) "></path><g id="inner-round"><use fill="black" fill-opacity="1" filter="url(#filter-3)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use><use fill="#F7F7F7" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use></g></g></g></g></svg></a>
+          <a href="#"><h1 class="title">YAPI 接口文档</h1></a>
+          <div class="nav">
+            <a href="https://hellosean1025.github.io/yapi/">YApi</a>
+          </div>
+        </div>
+        <div class="g-doc">
+          <div class="table-of-contents"><ul><li><a href="#restful">restful</a><ul><li><a href="#manageru670du52a1u5730u57400a3ca20id3dmanageru670du52a1u5730u57401403e203ca3e">manager服务地址
+<a id=manager服务地址140> </a></a></li><li><a href="#u5fc3u8df30a3ca20id3du5fc3u8df31403e203ca3e">心跳
+<a id=心跳140> </a></a></li><li><a href="#u67e5u8be2mqttu670du52a1u5730u57400a3ca20id3du67e5u8be2mqttu670du52a1u5730u57401403e203ca3e">查询mqtt服务地址
+<a id=查询mqtt服务地址140> </a></a></li><li><a href="#u767bu5f55u7b2cu4e00u6b650a3ca20id3du767bu5f55u7b2cu4e00u6b651403e203ca3e">登录第一步
+<a id=登录第一步140> </a></a></li><li><a href="#u767bu5f55u7b2cu4e8cu6b650a3ca20id3du767bu5f55u7b2cu4e8cu6b651403e203ca3e">登录第二步
+<a id=登录第二步140> </a></a></li><li><a href="#u7ec8u7aefu83b7u53d6u54c1u724cu5b9au5236u4fe1u606f0a3ca20id3du7ec8u7aefu83b7u53d6u54c1u724cu5b9au5236u4fe1u606f1403e203ca3e">终端获取品牌定制信息
+<a id=终端获取品牌定制信息140> </a></a></li><li><a href="#u83b7u53d6u672cu673au7b56u75650a3ca20id3du83b7u53d6u672cu673au7b56u75651403e203ca3e">获取本机策略
+<a id=获取本机策略140> </a></a></li><li><a href="#u83b7u53d6u673au6784u540du79f00a3ca20id3du83b7u53d6u673au6784u540du79f01403e203ca3e">获取机构名称
+<a id=获取机构名称140> </a></a></li><li><a href="#u83b7u53d6u7ec8u7aefu76f8u5173u4fe1u606f0a3ca20id3du83b7u53d6u7ec8u7aefu76f8u5173u4fe1u606f1403e203ca3e">获取终端相关信息
+<a id=获取终端相关信息140> </a></a></li><li><a href="#u83b7u53d6u8f6fu4ef6u5305u6307u5b9au7248u672cu7684u6587u4ef6u5217u88680a3ca20id3du83b7u53d6u8f6fu4ef6u5305u6307u5b9au7248u672cu7684u6587u4ef6u5217u88681403e203ca3e">获取软件包指定版本的文件列表
+<a id=获取软件包指定版本的文件列表140> </a></a></li><li><a href="#u83b7u53d6u8f6fu4ef6u5305u767du540du53550a3ca20id3du83b7u53d6u8f6fu4ef6u5305u767du540du53551403e203ca3e">获取软件包白名单
+<a id=获取软件包白名单140> </a></a></li><li><a href="#u83b7u53d6u8f6fu4ef6u5305u7684u6700u65b0u7248u672cu53f70a3ca20id3du83b7u53d6u8f6fu4ef6u5305u7684u6700u65b0u7248u672cu53f71403e203ca3e">获取软件包的最新版本号
+<a id=获取软件包的最新版本号140> </a></a></li><li><a href="#u8bbeu5907u6ce8u518c0a3ca20id3du8bbeu5907u6ce8u518c1403e203ca3e">设备注册
+<a id=设备注册140> </a></a></li></ul></li></ul></div>
+          <div id="right" class="content-right">
+           <h1 class="curproject-name"> protector </h1> 
+<h1 id="restful">restful</h1>
+<p></p>
+<h2 id="manageru670du52a1u5730u57400a3ca20id3dmanageru670du52a1u5730u57401403e203ca3e">manager服务地址
+<a id=manager服务地址140> </a></h2>
+<p></p>
+<h3 id="">基本信息</h3>
+<p><strong>Path：</strong> /protector/manager/url</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-2">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;ip&quot;: &quot;&quot;,
+   &quot;mac&quot;: &quot;&quot;
+}
+</code></pre>
+<h3 id="-3">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;edge&quot;: [
+         &quot;https://192.168.110.225:8080&quot;
+      ],
+      &quot;mqtt&quot;: [
+         &quot;tcp://192.168.110.225:1883&quot;
+      ]
+   }
+}
+</code></pre>
+<h2 id="u5fc3u8df30a3ca20id3du5fc3u8df31403e203ca3e">心跳
+<a id=心跳140> </a></h2>
+<p></p>
+<h3 id="-4">基本信息</h3>
+<p><strong>Path：</strong> /protector/heartbeat</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>code：<br>
+&nbsp; &nbsp; 200 - 成功<br>
+&nbsp; &nbsp; 6001 -&nbsp;设备不存在或已注销<br>
+&nbsp; &nbsp; 6002 -&nbsp;通信令牌已失效</p>
+<h3 id="-5">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;deviceId&quot;: &quot;cad504c78dd14a008c6fd44d51e25591&quot;,
+   &quot;locate&quot;: &quot;kse/guestos&quot;,
+   &quot;ip&quot;: &quot;192.168.12.10&quot;
+}
+</code></pre>
+<h3 id="-6">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200
+}
+</code></pre>
+<h2 id="u67e5u8be2mqttu670du52a1u5730u57400a3ca20id3du67e5u8be2mqttu670du52a1u5730u57401403e203ca3e">查询mqtt服务地址
+<a id=查询mqtt服务地址140> </a></h2>
+<p></p>
+<h3 id="-7">基本信息</h3>
+<p><strong>Path：</strong> /protector/mqtt/url</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-8">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;ip&quot;: &quot;192.168.1.1&quot;,
+   &quot;mac&quot;: &quot;&quot;
+}
+</code></pre>
+<h3 id="-9">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;pass&quot;: &quot;admin&quot;,
+      &quot;addr&quot;: [
+         &quot;tcp://192.168.110.225:1883&quot;
+      ],
+      &quot;user&quot;: &quot;admin&quot;
+   }
+}
+</code></pre>
+<h2 id="u767bu5f55u7b2cu4e00u6b650a3ca20id3du767bu5f55u7b2cu4e00u6b651403e203ca3e">登录第一步
+<a id=登录第一步140> </a></h2>
+<p></p>
+<h3 id="-10">基本信息</h3>
+<p><strong>Path：</strong> /protector/login/first</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-11">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;deviceId&quot;: &quot;cad504c78dd14a008c6fd44d51e25591&quot;,
+   &quot;loginToken&quot;: &quot;1d4d0ebdacca4c7e96a1267fad9de2c0&quot;,
+   &quot;downKEK&quot;: &quot;0448f829c006ed7895a20ce3a2e15cca5ad6388c7f694463a68ac0a3321db36eba5371496fb48525126dd78f6667fdef72cbb06bfd6951bb4cd6310a8cd5b41b91&quot;,
+   &quot;downKEKAlgo&quot;: &quot;SM2&quot;
+}
+</code></pre>
+<h3 id="-12">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;downCDK&quot;: &quot;0412a8174786720c49827702658e514b6b9fb4afbf21b3bda33ec7b01f9ac2554e16bafe5e50e3b011166b5375293ec63e8de84885545fc8b08428bbebb3accdb4c5370a2d8998608664cbaa427e1ed25103ee78fec251cf8d26329292a34f5be7095ca7244caf5d32c5c524a970298652&quot;,
+      &quot;upKEK&quot;: &quot;04c2fa85d12f8dfbbd584d9a1e3a1dbf27cf42d1e6d0538c69a92c9257b02e3682a12b14ff40a32973a601f3fab5e6aaabf9b77b39a4c4dccb1288f127173ea8ba&quot;,
+      &quot;upKEKAlgo&quot;: &quot;SM2&quot;
+   }
+}
+</code></pre>
+<h2 id="u767bu5f55u7b2cu4e8cu6b650a3ca20id3du767bu5f55u7b2cu4e8cu6b651403e203ca3e">登录第二步
+<a id=登录第二步140> </a></h2>
+<p></p>
+<h3 id="-13">基本信息</h3>
+<p><strong>Path：</strong> /protector/login/second</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-14">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;deviceId&quot;: &quot;cad504c78dd14a008c6fd44d51e25591&quot;,
+   &quot;loginToken&quot;: &quot;1d4d0ebdacca4c7e96a1267fad9de2c0&quot;,
+   &quot;upCDK&quot;: &quot;33916B785363225974B16BD4C92654F274ED8669FB5F1842DED06E3CE3A06DE83B91C891775EEA0CF7CB524466063F97D0276EB3CE8C1BE7A84C1064B285835153D8A3BA688DB7F0D4F699ED129960FF53D996AB8E1AE73984109E88C523AF8298078A1E77EE&quot;
+}
+</code></pre>
+<h3 id="-15">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;passport&quot;: &quot;638c403ced9a41d19305dcea43057445&quot;
+   }
+}
+</code></pre>
+<h2 id="u7ec8u7aefu83b7u53d6u54c1u724cu5b9au5236u4fe1u606f0a3ca20id3du7ec8u7aefu83b7u53d6u54c1u724cu5b9au5236u4fe1u606f1403e203ca3e">终端获取品牌定制信息
+<a id=终端获取品牌定制信息140> </a></h2>
+<p></p>
+<h3 id="-16">基本信息</h3>
+<p><strong>Path：</strong> /protector/custom/config/info</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-17">请求参数</h3>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> </span></td><td key=1><span></span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h3 id="-18">返回数据</h3>
+<pre><code class="language-javascript">{
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;code&quot;: 200,
+    &quot;data&quot;: {
+        &quot;brandInfo&quot;: {
+            &quot;brand&quot;: &quot;test&quot;,
+            &quot;vendor&quot;: &quot;test&quot;
+        }
+    }
+}
+</code></pre>
+<h2 id="u83b7u53d6u672cu673au7b56u75650a3ca20id3du83b7u53d6u672cu673au7b56u75651403e203ca3e">获取本机策略
+<a id=获取本机策略140> </a></h2>
+<p></p>
+<h3 id="-19">基本信息</h3>
+<p><strong>Path：</strong> /protector/strategy/get</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-20">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;deviceId&quot;: &quot;100000001&quot;,
+   &quot;ip&quot;: &quot;192.168.110.12&quot;
+}
+</code></pre>
+<h3 id="-21">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: [
+      {
+         &quot;id&quot;: &quot;SYSTEM-19&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7InVzZSI6eyJkZXZpY2UiOiJESVNLMCIsInRocmVzaG9sZCI6IjkwIn19XX0=&quot;
+      },
+      {
+         &quot;id&quot;: &quot;SYSTEM-20&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7InVzZSI6eyJkZXZpY2UiOiJESVNLIiwidGhyZXNob2xkIjoiNzAifX1dfQ==&quot;
+      },
+      {
+         &quot;id&quot;: &quot;SYSTEM-21&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7InVzZSI6eyJkZXZpY2UiOiJDUFUiLCJ0aHJlc2hvbGQiOiI4MCIsImR1cmF0aW9uIjoiMTAifX1dfQ==&quot;
+      },
+      {
+         &quot;id&quot;: &quot;SYSTEM-22&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7InVzZSI6eyJkZXZpY2UiOiJNRU1PUlkiLCJ0aHJlc2hvbGQiOiI4MCIsImR1cmF0aW9uIjoiMTAifX1dfQ==&quot;
+      },
+      {
+         &quot;id&quot;: &quot;SYSTEM-23&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7InRlbXAiOnsiZGV2aWNlIjoiQ1BVIiwidGhyZXNob2xkIjoiODAiLCJkdXJhdGlvbiI6IjIwIn19XX0=&quot;
+      },
+      {
+         &quot;id&quot;: &quot;SYSTEM-24&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7ImNoYW5nZSI6eyJkZXZpY2UiOiJESVNLIn19XX0=&quot;
+      },
+      {
+         &quot;id&quot;: &quot;SYSTEM-25&quot;,
+         &quot;time&quot;: &quot;2022-12-21 16:27:24&quot;,
+         &quot;opportunity&quot;: &quot;immediate&quot;,
+         &quot;locate&quot;: &quot;guestos&quot;,
+         &quot;scope&quot;: &quot;all&quot;,
+         &quot;enable&quot;: false,
+         &quot;params&quot;: &quot;eyJzeXN0ZW0iOlt7ImNoYW5nZSI6eyJkZXZpY2UiOiJNRU1PUlkifX1dfQ==&quot;
+      }
+   ]
+}
+</code></pre>
+<h2 id="u83b7u53d6u673au6784u540du79f00a3ca20id3du83b7u53d6u673au6784u540du79f01403e203ca3e">获取机构名称
+<a id=获取机构名称140> </a></h2>
+<p></p>
+<h3 id="-22">基本信息</h3>
+<p><strong>Path：</strong> /protector/dept/info/{customerCode}</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-23">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>路径参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>customerCode</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-24">返回数据</h3>
+<pre><code class="language-javascript">{
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;code&quot;: 200,
+    &quot;data&quot;: {
+        &quot;deptName&quot;: &quot;北京许先网科技发展有限公司&quot;,
+        &quot;password&quot;: &quot;35a771b30092e77c4855b0091f77d34b&quot;
+    }
+}
+</code></pre>
+<h2 id="u83b7u53d6u7ec8u7aefu76f8u5173u4fe1u606f0a3ca20id3du83b7u53d6u7ec8u7aefu76f8u5173u4fe1u606f1403e203ca3e">获取终端相关信息
+<a id=获取终端相关信息140> </a></h2>
+<p></p>
+<h3 id="-25">基本信息</h3>
+<p><strong>Path：</strong> /protector/device/info/get</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-26">请求参数</h3>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> </span></td><td key=1><span></span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h3 id="-27">返回数据</h3>
+<pre><code class="language-javascript">{
+    &quot;msg&quot;: &quot;操作成功&quot;,
+    &quot;code&quot;: 200,
+    &quot;data&quot;: {
+        &quot;deviceName&quot;: &quot;kunlun-PC&quot;,
+        &quot;guard&quot;: &quot;off&quot;,
+        &quot;mode&quot;: &quot;user&quot;,
+        &quot;addr&quot;: &quot;http://192.168.110.55:8070&quot;,
+        &quot;password&quot;: &quot;3a75e81fb180baaa67e4f2957d094f76af37f9cf64cf3a8fdd32cc192c0020b8&quot;
+    }
+}
+</code></pre>
+<h2 id="u83b7u53d6u8f6fu4ef6u5305u6307u5b9au7248u672cu7684u6587u4ef6u5217u88680a3ca20id3du83b7u53d6u8f6fu4ef6u5305u6307u5b9au7248u672cu7684u6587u4ef6u5217u88681403e203ca3e">获取软件包指定版本的文件列表
+<a id=获取软件包指定版本的文件列表140> </a></h2>
+<p></p>
+<h3 id="-28">基本信息</h3>
+<p><strong>Path：</strong> /protector/file/list</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-29">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;packetType&quot;: &quot;klsec&quot;,
+   &quot;packetName&quot;: &quot;protector&quot;,
+   &quot;os&quot;: &quot;linux&quot;,
+   &quot;version&quot;: &quot;1.0.1&quot;
+}
+</code></pre>
+<h3 id="-30">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;version&quot;: &quot;1.0.1&quot;,
+      &quot;fileSize&quot;: 0,
+      &quot;digestAlgo&quot;: &quot;&quot;,
+      &quot;fileList&quot;: [
+         {
+            &quot;name&quot;: &quot;/profile/2023/01/12/apache-maven-3.2.2-bin_20230112104625A002.zip&quot;,
+            &quot;digest&quot;: &quot;&quot;
+         }
+      ],
+      &quot;url&quot;: &quot;http://127.0.0.1:8080&quot;,
+      &quot;setupCommand&quot;: &quot;&quot;
+   }
+}
+</code></pre>
+<h2 id="u83b7u53d6u8f6fu4ef6u5305u767du540du53550a3ca20id3du83b7u53d6u8f6fu4ef6u5305u767du540du53551403e203ca3e">获取软件包白名单
+<a id=获取软件包白名单140> </a></h2>
+<p></p>
+<h3 id="-31">基本信息</h3>
+<p><strong>Path：</strong> /protector/software/list</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-32">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;deviceId&quot;: &quot;1122&quot;
+}
+</code></pre>
+<h3 id="-33">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: [
+      &quot;TEST&quot;,
+      &quot;fascapute&quot;,
+      &quot;测试&quot;
+   ]
+}
+</code></pre>
+<h2 id="u83b7u53d6u8f6fu4ef6u5305u7684u6700u65b0u7248u672cu53f70a3ca20id3du83b7u53d6u8f6fu4ef6u5305u7684u6700u65b0u7248u672cu53f71403e203ca3e">获取软件包的最新版本号
+<a id=获取软件包的最新版本号140> </a></h2>
+<p></p>
+<h3 id="-34">基本信息</h3>
+<p><strong>Path：</strong> /protector/latest/version</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-35">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;packetType&quot;: &quot;klsec&quot;,
+   &quot;packetName&quot;: &quot;protector&quot;,
+   &quot;os&quot;: &quot;linux&quot;
+}
+</code></pre>
+<h3 id="-36">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;version&quot;: &quot;1.0.1&quot;
+   }
+}
+</code></pre>
+<h2 id="u8bbeu5907u6ce8u518c0a3ca20id3du8bbeu5907u6ce8u518c1403e203ca3e">设备注册
+<a id=设备注册140> </a></h2>
+<p></p>
+<h3 id="-37">基本信息</h3>
+<p><strong>Path：</strong> /protector/register</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>brand: 品牌,<br>
+&nbsp;&nbsp;&nbsp; model: 型号,<br>
+&nbsp;&nbsp;&nbsp; processor: 处理器,<br>
+&nbsp;&nbsp;&nbsp; operatingSystem: 操作系统,<br>
+&nbsp;&nbsp;&nbsp; deviceSerialNumber: 设备SN号,<br>
+&nbsp;&nbsp;&nbsp; mainBoard:主板,<br>
+&nbsp;&nbsp;&nbsp; hardDisk:硬盘,<br>
+&nbsp;&nbsp;&nbsp; memory:内存,<br>
+&nbsp;&nbsp;&nbsp; deviceType:终端类型（NOTEBOOK/PC)</p>
+<h3 id="-38">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<pre><code class="language-javascript">{
+   &quot;deviceName&quot;: &quot;test120701&quot;,
+   &quot;mac&quot;: &quot;00342-test120701&quot;,
+   &quot;address&quot;: &quot;china&quot;,
+   &quot;params&quot;: {
+      &quot;brand&quot;: &quot;龙兴&quot;,
+      &quot;model&quot;: &quot;龙兴12346&quot;,
+      &quot;processor&quot;: &quot;Loongson-3A5000&quot;,
+      &quot;operatingSystem&quot;: &quot;UOS&quot;,
+      &quot;deviceSerialNumber&quot;: &quot;07:FB:0F:9D:A8:B0&quot;,
+      &quot;mainBoard&quot;: &quot;IDV&quot;,
+      &quot;hardDisk&quot;: &quot;&quot;,
+      &quot;memory&quot;: &quot;&quot;,
+      &quot;deviceType&quot;: &quot;NOTEBOOK&quot;,
+      &quot;customerCode&quot;: &quot;102&quot;,
+      &quot;remark&quot;: &quot;备注&quot;
+   }
+}
+</code></pre>
+<h3 id="-39">返回数据</h3>
+<pre><code class="language-javascript">{
+   &quot;msg&quot;: &quot;操作成功&quot;,
+   &quot;code&quot;: 200,
+   &quot;data&quot;: {
+      &quot;loginToken&quot;: &quot;4b685e1e94214faf828c610ea468f434&quot;,
+      &quot;deviceId&quot;: &quot;963c3619f6424ae09c45068303b2fd2b&quot;,
+      &quot;password&quot;: &quot;9aa37fc8fb4d0ee8908b2f7f843c276c25f992f7195b8f92954582aafd0d7f46&quot;
+   }
+}
+</code></pre>
+
+            <footer class="m-footer">
+              <p>Build by <a href="https://ymfe.org/">YMFE</a>.</p>
+            </footer>
+          </div>
+        </div>
+      </body>
+      </html>
+      

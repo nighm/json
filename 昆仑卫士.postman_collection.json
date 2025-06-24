@@ -1,0 +1,2281 @@
+{
+	"info": {
+		"_postman_id": "bc1c4cc3-052a-49d8-8eee-6a3380566b24",
+		"name": "昆仑卫士",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45071610",
+		"_collection_link": "https://nighm-1715427.postman.co/workspace/nighm's-Workspace~0264a38f-0b1d-4039-8ee6-63ff8c8111aa/collection/45071610-bc1c4cc3-052a-49d8-8eee-6a3380566b24?action=share&source=collection_link&creator=45071610"
+	},
+	"item": [
+		{
+			"name": "restful",
+			"item": [
+				{
+					"name": "心跳检测",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.code).to.equal(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/protector/heartbeat",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"protector",
+								"heartbeat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "学校终端在线时长",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.code).to.equal(200);",
+									"});",
+									"",
+									"pm.test(\"Response has data array\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.data).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/device/top5/online/school",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"device",
+								"top5",
+								"online",
+								"school"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "平台终端在线时长",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.code).to.equal(200);",
+									"});",
+									"",
+									"pm.test(\"Response has data array\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.data).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/device/top5/online/platform",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"device",
+								"top5",
+								"online",
+								"platform"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "资产管理",
+			"item": [
+				{
+					"name": "终端保修状态&终端领用情况",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/assert/statistic/maintenance-usage",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"assert",
+								"statistic",
+								"maintenance-usage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端变更列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/assert/statistic/device/change/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"assert",
+								"statistic",
+								"device",
+								"change",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端变更统计",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/assert/statistic/device/change",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"assert",
+								"statistic",
+								"device",
+								"change"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端品牌&类型分布",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/assert/statistic/summary",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"assert",
+								"statistic",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端数量变化情况",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/assert/statistic/device/line",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"assert",
+								"statistic",
+								"device",
+								"line"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端采购与维保列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/assert/statistic/purchase-maintenance/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"assert",
+								"statistic",
+								"purchase-maintenance",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "维修记录列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/business/deviceRepair/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"business",
+								"deviceRepair",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "登录",
+			"item": [
+				{
+					"name": "uuid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  pm.expect(responseData.code).to.equal(200);\r",
+									"  pm.environment.set(\"uuid\", responseData.uuid);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/captchaImage",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"captchaImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"    pm.environment.set(\"token\", responseData.token);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"super\", \"password\": \"Ujr4o8cWpM9C01879XItag==\", \"code\": \"56\", \"uuid\": \"{{uuid}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/login",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "健康监测",
+			"item": [
+				{
+					"name": "告警日志列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/statistic/device/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"statistic",
+								"device",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "告警类型下拉框",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/type/condition",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"type",
+								"condition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "告警类型分布趋势",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/health/line",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"health",
+								"line"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "批量取消告警",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/cancel",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "批量确认告警",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/handle",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"handle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "饼图（终端各类告警）",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/health/pie/DEVICE",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"health",
+								"pie",
+								"DEVICE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "饼图（硬件告警）",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/health/pie/HARDWARE",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"health",
+								"pie",
+								"HARDWARE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "饼图（操作系统告警）",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/health/pie/OPERATING_SYSTEM",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"health",
+								"pie",
+								"OPERATING_SYSTEM"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "饼图（违规告警）",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/warning/health/pie/ILLEGAL",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"warning",
+								"health",
+								"pie",
+								"ILLEGAL"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "数据看板",
+			"item": [
+				{
+					"name": "教育终端分布信息",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/server/manage/device/statistic",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"server",
+								"manage",
+								"device",
+								"statistic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端在线时长-学校",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/device/top5/online/school",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"device",
+								"top5",
+								"online",
+								"school"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端开机率-学校",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/device/boot/school",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"device",
+								"boot",
+								"school"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端在线时长-平台",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/device/top5/online/platform",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"device",
+								"top5",
+								"online",
+								"platform"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端开机率-平台",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/device/boot/platform",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"device",
+								"boot",
+								"platform"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端维修数据看板",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/maintenance/stat",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"maintenance",
+								"stat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "软件使用时长",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/soft/top5/use-time",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"soft",
+								"top5",
+								"use-time"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "生成统计报告",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/dashboard/report/generate",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"dashboard",
+								"report",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "运维服务",
+			"item": [
+				{
+					"name": "一键还原出厂状态",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/additional/initial/restore/{{dev_ids}}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"additional",
+								"initial",
+								"restore",
+								"{{dev_ids}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "关闭内生守护",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/additional/endogenous/off/{{dev_ids}}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"additional",
+								"endogenous",
+								"off",
+								"{{dev_ids}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "开启内生守护",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/additional/endogenous/on/{{dev_ids}}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"additional",
+								"endogenous",
+								"on",
+								"{{dev_ids}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "服务器下拉列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/support/condition/serverIp/select?deviceGroupIds=118,119",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"support",
+								"condition",
+								"serverIp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "deviceGroupIds",
+									"value": "118,119"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "本地密码重置",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/additional/local/reset/{{dev_ids}}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"additional",
+								"local",
+								"reset",
+								"{{dev_ids}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消还原策略",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/deviceUserManage/restore/cancel/{userIds}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"deviceUserManage",
+								"restore",
+								"cancel",
+								"{userIds}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "批量修改备注名称",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/business/device/deviceName/batch/update/{ids}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"business",
+								"device",
+								"deviceName",
+								"batch",
+								"update",
+								"{ids}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "模式切换",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/additional/mode/switch",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"additional",
+								"mode",
+								"switch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "终端维护-列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/business/device/maintenance/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"business",
+								"device",
+								"maintenance",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "设置定时还原",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/deviceUserManage/regular/restore",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"deviceUserManage",
+								"regular",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "重启保持数据",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/deviceUserManage/kar/retain/{userIds}?",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"deviceUserManage",
+								"kar",
+								"retain",
+								"{userIds}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "重启自动还原",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/device/deviceUserManage/kar/restore/{userIds}?",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"device",
+								"deviceUserManage",
+								"kar",
+								"restore",
+								"{userIds}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "消息广播",
+			"item": [
+				{
+					"name": "创建消息",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除历史消息",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast/{{dev_ids}}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast",
+								"{{dev_ids}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除历史消息列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发布消息",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast/release/{messageId}/{groupIds}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast",
+								"release",
+								"{messageId}",
+								"{groupIds}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "消息下拉列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast/message/select",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast",
+								"message",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "消息广播-主页-删除",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast/release/{messageGroupId}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast",
+								"release",
+								"{messageGroupId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "消息广播-主页列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code '200'\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.code).to.equal(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/broadcast/release/list",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"broadcast",
+								"release",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "文件下发",
+			"item": [
+				{
+					"name": "上传文件",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"file\": \"\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/file/upload",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "下发文件",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"file\": \"\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server_url}}/prod-api/operation/file/distribute/{fileIds}/{groupIds}",
+							"protocol": "https",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"prod-api",
+								"operation",
+								"file",
+								"distribute",
+								"{fileIds}",
+								"{groupIds}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

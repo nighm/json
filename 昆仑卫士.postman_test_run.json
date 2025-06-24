@@ -1,0 +1,1421 @@
+{
+	"id": "3ba210dc-5cee-4a86-8556-4188e5e1fd23",
+	"name": "昆仑卫士",
+	"timestamp": "2025-06-13T01:31:22.411Z",
+	"collection_id": "45071610-bc1c4cc3-052a-49d8-8eee-6a3380566b24",
+	"folder_id": 0,
+	"environment_id": "45071610-93abb1c2-0424-44f3-86b0-c2b98481f2ea",
+	"totalPass": 23,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-06-13T01:31:18.076Z",
+	"totalFail": 20,
+	"results": [
+		{
+			"id": "d5ab1083-b12a-4fb7-ad90-dc29e4c8df90",
+			"name": "New Request",
+			"url": "https://",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d72dd674-8bcf-422d-8d5e-ef26d645a927",
+			"name": "终端保修状态&终端领用情况",
+			"url": "https:///prod-api/assert/statistic/maintenance-usage",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "5577b497-fc48-4b2e-adb0-337ff97ecaf4",
+			"name": "终端变更列表",
+			"url": "https://192.168.24.45/prod-api/assert/statistic/device/change/list",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "998f36a8-bb9f-4cd7-b6cf-07aa0ef15202",
+			"name": "终端变更统计",
+			"url": "https://192.168.24.45/prod-api/assert/statistic/device/change",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "20bbca73-ae77-44a6-b80d-238f3a9df707",
+			"name": "终端品牌&类型分布",
+			"url": "https://192.168.24.45/prod-api/assert/statistic/summary",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "d1c140e9-3ab1-4935-baa8-081928c9111b",
+			"name": "终端数量变化情况",
+			"url": "https://192.168.24.45/prod-api/assert/statistic/device/line",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "37533e55-94ff-45d6-b2f0-2a4afb1a60d6",
+			"name": "终端采购与维保列表",
+			"url": "https://192.168.24.45/prod-api/assert/statistic/purchase-maintenance/list",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "fc85b958-98e6-4a79-8d89-6b91266e493a",
+			"name": "维修记录列表",
+			"url": "https://192.168.24.45/prod-api/business/deviceRepair/list",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "ae151f20-3349-4616-a9dc-0e9fefa08d26",
+			"name": "告警日志列表",
+			"url": "https://192.168.24.45/prod-api/warning/statistic/device/list",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "ef5ede16-4bc0-4222-95c9-e3573723ee63",
+			"name": "告警类型下拉框",
+			"url": "https://192.168.24.45/prod-api/warning/type/condition",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "397571b9-5e65-4515-947f-346fb05377fb",
+			"name": "告警类型分布趋势",
+			"url": "https://192.168.24.45/prod-api/warning/health/line",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "7e022d92-78db-4d35-80c6-cb4d63844073",
+			"name": "批量取消告警",
+			"url": "https://192.168.24.45/prod-api/warning/cancel",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "3deb2686-68bc-4004-a30e-4099f4696d9f",
+			"name": "批量确认告警",
+			"url": "https://192.168.24.45/prod-api/warning/handle",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "aa9e4e51-7395-4e2c-a4c0-56094c962f31",
+			"name": "饼图（终端各类告警）",
+			"url": "https://192.168.24.45/prod-api/warning/health/pie/DEVICE",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "99aa9ba2-e97c-4f5d-a46a-e2c793a808ff",
+			"name": "饼图（硬件告警）",
+			"url": "https://192.168.24.45/prod-api/warning/health/pie/HARDWARE",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "c54e3a3c-a48a-4bcd-8d4f-80b2ff230510",
+			"name": "饼图（操作系统告警）",
+			"url": "https://192.168.24.45/prod-api/warning/health/pie/OPERATING_SYSTEM",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "b2704b22-3292-4bd8-82e5-817c9484ffb3",
+			"name": "饼图（违规告警）",
+			"url": "https://192.168.24.45/prod-api/warning/health/pie/ILLEGAL",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "ef8c6740-4184-4923-afdc-6133cd26a668",
+			"name": "教育终端分布信息",
+			"url": "https://192.168.24.45/prod-api/server/manage/device/statistic",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "7483e07c-89da-4ff0-845c-9a8866496065",
+			"name": "终端在线时长-学校",
+			"url": "https://192.168.24.45/prod-api/dashboard/device/top5/online/school",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "c8614b99-76ee-42f7-8012-f0a05c22d75a",
+			"name": "终端开机率-学校",
+			"url": "https://192.168.24.45/prod-api/dashboard/device/boot/school",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "a01effb0-f0a8-4a4a-b799-72596e994de6",
+			"name": "终端在线时长-平台",
+			"url": "https://192.168.24.45/prod-api/dashboard/device/top5/online/platform",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "ac81a27e-1fd2-45ee-adb4-661e8f719ff1",
+			"name": "终端开机率-平台",
+			"url": "https://192.168.24.45/prod-api/dashboard/device/boot/platform",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "3560e628-0ed8-41b2-919b-9b2692b94244",
+			"name": "终端维修数据看板",
+			"url": "https://192.168.24.45/prod-api/dashboard/maintenance/stat",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "85324af5-222a-47fc-8bbb-532d179c431e",
+			"name": "软件使用时长",
+			"url": "https://192.168.24.45/prod-api/dashboard/soft/top5/use-time",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "440e8d13-7f9d-400a-bec7-ac21b4f43c1e",
+			"name": "生成统计报告",
+			"url": "https://192.168.24.45/prod-api/dashboard/report/generate",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "7110f4c5-28cf-426b-9023-24ca5364b788",
+			"name": "一键还原出厂状态",
+			"url": "https://192.168.24.45/prod-api/device/additional/initial/restore/{{dev_ids}}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "651c372f-862c-4dd7-a68c-5a83a5faeefb",
+			"name": "关闭内生守护",
+			"url": "https://192.168.24.45/prod-api/device/additional/endogenous/off/{{dev_ids}}",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "dbaf595b-6e13-4eb1-864a-47d83055229c",
+			"name": "开启内生守护",
+			"url": "https://192.168.24.45/prod-api/device/additional/endogenous/on/{{dev_ids}}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "3094ca5b-fe64-4f7d-bc06-343c660e54fd",
+			"name": "服务器下拉列表",
+			"url": "https://192.168.24.45/prod-api/support/condition/serverIp/select?deviceGroupIds=118,119",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "5b4b0129-e714-4f27-8e49-7da1f3870edc",
+			"name": "本地密码重置",
+			"url": "https://192.168.24.45/prod-api/device/additional/local/reset/{{dev_ids}}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "9fff0497-1948-4782-ba81-44582551c7b4",
+			"name": "取消还原策略",
+			"url": "https://192.168.24.45/prod-api/device/deviceUserManage/restore/cancel/{userIds}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "a40ddf7d-b4fa-4bda-9834-2e6338e14504",
+			"name": "批量修改备注名称",
+			"url": "https://192.168.24.45/prod-api/business/device/deviceName/batch/update/{ids}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "338077ba-4ff4-4162-a011-326ff81a83cb",
+			"name": "模式切换",
+			"url": "https://192.168.24.45/prod-api/device/additional/mode/switch",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "a637b927-0c5f-42ef-ac80-51c716a44faf",
+			"name": "终端维护-列表",
+			"url": "https://192.168.24.45/prod-api/business/device/maintenance/list",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "1d71edb6-8c69-4ce7-8e8c-1842e295821c",
+			"name": "设置定时还原",
+			"url": "https://192.168.24.45/prod-api/device/deviceUserManage/regular/restore",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "c73a71bd-ca57-4cb0-a46d-df6fdfdd1b41",
+			"name": "重启保持数据",
+			"url": "https://192.168.24.45/prod-api/device/deviceUserManage/kar/retain/{userIds}?",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "454a2433-05db-417e-af25-d8a56b3e350f",
+			"name": "重启自动还原",
+			"url": "https://192.168.24.45/prod-api/device/deviceUserManage/kar/restore/{userIds}?",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "e53e954a-2fda-4734-8d02-c418e452c66f",
+			"name": "创建消息",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "5871de88-d5db-4733-aaeb-b54259874443",
+			"name": "删除历史消息",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast/{{dev_ids}}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "1da62817-8a15-47c6-a240-a61c3557496d",
+			"name": "删除历史消息列表",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast/list",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "79e3657d-bb3d-495e-a058-9140629f8e81",
+			"name": "发布消息",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast/release/{messageId}/{groupIds}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "8da5fa59-51d4-482e-8dc6-716f8a513eb5",
+			"name": "消息下拉列表",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast/message/select",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "d101b6d9-c7c6-407f-9361-5c95bf5c6def",
+			"name": "消息广播-主页-删除",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast/release/{messageGroupId}",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": false
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response code '200'": false
+				}
+			]
+		},
+		{
+			"id": "0c9138a9-5227-4266-9340-a9ae98add560",
+			"name": "消息广播-主页列表",
+			"url": "https://192.168.24.45/prod-api/operation/broadcast/release/list",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code '200'": true
+			},
+			"testPassFailCounts": {
+				"Response code '200'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code '200'": true
+				}
+			]
+		},
+		{
+			"id": "6d403b07-3b0a-4ecd-a3cf-9a1e438dcd6f",
+			"name": "上传文件",
+			"url": "https://192.168.24.45/prod-api/operation/file/upload",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bf0b6f81-1096-4a06-8a69-8542f3197b9a",
+			"name": "下发文件",
+			"url": "https://192.168.24.45/prod-api/operation/file/distribute/{fileIds}/{groupIds}",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 507,
+	"collection": {
+		"requests": [
+			{
+				"id": "d5ab1083-b12a-4fb7-ad90-dc29e4c8df90",
+				"method": "GET"
+			},
+			{
+				"id": "d72dd674-8bcf-422d-8d5e-ef26d645a927",
+				"method": "GET"
+			},
+			{
+				"id": "5577b497-fc48-4b2e-adb0-337ff97ecaf4",
+				"method": "GET"
+			},
+			{
+				"id": "998f36a8-bb9f-4cd7-b6cf-07aa0ef15202",
+				"method": "GET"
+			},
+			{
+				"id": "20bbca73-ae77-44a6-b80d-238f3a9df707",
+				"method": "GET"
+			},
+			{
+				"id": "d1c140e9-3ab1-4935-baa8-081928c9111b",
+				"method": "GET"
+			},
+			{
+				"id": "37533e55-94ff-45d6-b2f0-2a4afb1a60d6",
+				"method": "GET"
+			},
+			{
+				"id": "fc85b958-98e6-4a79-8d89-6b91266e493a",
+				"method": "GET"
+			},
+			{
+				"id": "ae151f20-3349-4616-a9dc-0e9fefa08d26",
+				"method": "GET"
+			},
+			{
+				"id": "ef5ede16-4bc0-4222-95c9-e3573723ee63",
+				"method": "GET"
+			},
+			{
+				"id": "397571b9-5e65-4515-947f-346fb05377fb",
+				"method": "GET"
+			},
+			{
+				"id": "7e022d92-78db-4d35-80c6-cb4d63844073",
+				"method": "POST"
+			},
+			{
+				"id": "3deb2686-68bc-4004-a30e-4099f4696d9f",
+				"method": "POST"
+			},
+			{
+				"id": "aa9e4e51-7395-4e2c-a4c0-56094c962f31",
+				"method": "GET"
+			},
+			{
+				"id": "99aa9ba2-e97c-4f5d-a46a-e2c793a808ff",
+				"method": "GET"
+			},
+			{
+				"id": "c54e3a3c-a48a-4bcd-8d4f-80b2ff230510",
+				"method": "GET"
+			},
+			{
+				"id": "b2704b22-3292-4bd8-82e5-817c9484ffb3",
+				"method": "GET"
+			},
+			{
+				"id": "ef8c6740-4184-4923-afdc-6133cd26a668",
+				"method": "GET"
+			},
+			{
+				"id": "7483e07c-89da-4ff0-845c-9a8866496065",
+				"method": "GET"
+			},
+			{
+				"id": "c8614b99-76ee-42f7-8012-f0a05c22d75a",
+				"method": "GET"
+			},
+			{
+				"id": "a01effb0-f0a8-4a4a-b799-72596e994de6",
+				"method": "GET"
+			},
+			{
+				"id": "ac81a27e-1fd2-45ee-adb4-661e8f719ff1",
+				"method": "GET"
+			},
+			{
+				"id": "3560e628-0ed8-41b2-919b-9b2692b94244",
+				"method": "GET"
+			},
+			{
+				"id": "85324af5-222a-47fc-8bbb-532d179c431e",
+				"method": "GET"
+			},
+			{
+				"id": "440e8d13-7f9d-400a-bec7-ac21b4f43c1e",
+				"method": "POST"
+			},
+			{
+				"id": "7110f4c5-28cf-426b-9023-24ca5364b788",
+				"method": "GET"
+			},
+			{
+				"id": "651c372f-862c-4dd7-a68c-5a83a5faeefb",
+				"method": "GET"
+			},
+			{
+				"id": "dbaf595b-6e13-4eb1-864a-47d83055229c",
+				"method": "GET"
+			},
+			{
+				"id": "3094ca5b-fe64-4f7d-bc06-343c660e54fd",
+				"method": "GET"
+			},
+			{
+				"id": "5b4b0129-e714-4f27-8e49-7da1f3870edc",
+				"method": "GET"
+			},
+			{
+				"id": "9fff0497-1948-4782-ba81-44582551c7b4",
+				"method": "PUT"
+			},
+			{
+				"id": "a40ddf7d-b4fa-4bda-9834-2e6338e14504",
+				"method": "PUT"
+			},
+			{
+				"id": "338077ba-4ff4-4162-a011-326ff81a83cb",
+				"method": "POST"
+			},
+			{
+				"id": "a637b927-0c5f-42ef-ac80-51c716a44faf",
+				"method": "GET"
+			},
+			{
+				"id": "1d71edb6-8c69-4ce7-8e8c-1842e295821c",
+				"method": "POST"
+			},
+			{
+				"id": "c73a71bd-ca57-4cb0-a46d-df6fdfdd1b41",
+				"method": "PUT"
+			},
+			{
+				"id": "454a2433-05db-417e-af25-d8a56b3e350f",
+				"method": "PUT"
+			},
+			{
+				"id": "e53e954a-2fda-4734-8d02-c418e452c66f",
+				"method": "POST"
+			},
+			{
+				"id": "5871de88-d5db-4733-aaeb-b54259874443",
+				"method": "DELETE"
+			},
+			{
+				"id": "1da62817-8a15-47c6-a240-a61c3557496d",
+				"method": "GET"
+			},
+			{
+				"id": "79e3657d-bb3d-495e-a058-9140629f8e81",
+				"method": "POST"
+			},
+			{
+				"id": "8da5fa59-51d4-482e-8dc6-716f8a513eb5",
+				"method": "GET"
+			},
+			{
+				"id": "d101b6d9-c7c6-407f-9361-5c95bf5c6def",
+				"method": "DELETE"
+			},
+			{
+				"id": "0c9138a9-5227-4266-9340-a9ae98add560",
+				"method": "GET"
+			},
+			{
+				"id": "6d403b07-3b0a-4ecd-a3cf-9a1e438dcd6f",
+				"method": "POST"
+			},
+			{
+				"id": "bf0b6f81-1096-4a06-8a69-8542f3197b9a",
+				"method": "POST"
+			}
+		]
+	}
+}

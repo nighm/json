@@ -20,7 +20,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.infrastructure.cross_cutting import (
-    get_logger, get_config, get_cache, get_security_provider,
+    get_logger, get_config, get_cache_provider, get_security_provider,
     get_validator, get_statistical_analyzer, get_i18n_provider
 )
 
@@ -34,6 +34,10 @@ class CrossCuttingAutomation:
         self.config_path = self.project_root / "config"
         self.logs_path = self.project_root / "logs"
         self.cache_path = self.project_root / "cache"
+        
+    def get_cache(self):
+        """获取缓存实例"""
+        return get_cache_provider().get_cache()
         
     def setup_environment(self) -> bool:
         """设置运行环境"""
@@ -62,7 +66,7 @@ class CrossCuttingAutomation:
             
             # 检查依赖包
             required_packages = [
-                "pytest", "pytest-cov", "pyyaml", "cryptography"
+                "pytest", "pytest_cov", "pyyaml", "cryptography"
             ]
             
             missing_packages = []
@@ -156,7 +160,7 @@ class CrossCuttingAutomation:
             # 验证各模块功能
             modules = [
                 ("日志模块", lambda: get_logger("test")),
-                ("缓存模块", lambda: get_cache()),
+                ("缓存模块", lambda: self.get_cache()),
                 ("安全模块", lambda: get_security_provider()),
                 ("验证模块", lambda: get_validator()),
                 ("统计分析模块", lambda: get_statistical_analyzer()),
@@ -203,18 +207,121 @@ class CrossCuttingAutomation:
             return False
     
     def _generate_api_docs(self, docs_path: Path) -> None:
-        """生成API文档"""
+        """生成API文档（写入真实内容）"""
         api_doc = docs_path / "cross_cutting_api.md"
-        
-        # 这里可以添加自动生成API文档的逻辑
-        # 例如：解析代码注释、生成接口文档等
+        content = '''# 横切关注点层 API 接口文档
+
+## 概述
+
+本文档详细描述了横切关注点层所有模块的API接口，包括参数说明、返回值、使用示例等。
+
+## 日志模块 API
+
+### get_logger(name: str) -> Logger
+获取指定名称的日志器实例。
+
+### get_logger_factory() -> LoggerFactory
+获取日志器工厂实例。
+
+## 配置模块 API
+
+### get_config_provider() -> ConfigProvider
+获取配置提供者实例。
+
+### get_config(key: str, default: Any = None) -> Any
+获取配置值。
+
+## 安全模块 API
+
+### get_security_provider() -> SecurityProvider
+获取安全提供者实例。
+
+### hash_password(password: str) -> str
+哈希密码。
+
+### verify_password(password: str, hashed: str) -> bool
+验证密码。
+
+## 缓存模块 API
+
+### get_cache_provider() -> CacheProvider
+获取缓存提供者实例。
+
+### get_cache() -> Cache
+获取缓存实例。
+
+## 异常处理模块 API
+
+### get_exception_handler() -> ExceptionHandler
+获取异常处理器实例。
+
+### handle_exception(exception: Exception, context: Dict[str, Any] = None) -> bool
+处理异常。
+
+## 验证模块 API
+
+### get_validator() -> Validator
+获取验证器实例。
+
+### validate_data(data: Any, rules: List[ValidationRule]) -> ValidationResult
+验证数据。
+
+## 统计分析模块 API
+
+### get_statistical_analyzer() -> StatisticalAnalyzer
+获取统计分析器实例。
+
+### calculate_statistics(data: List[float]) -> StatisticalResult
+计算统计数据。
+
+## 国际化模块 API
+
+### get_i18n_provider() -> I18nProvider
+获取国际化提供者实例。
+
+### get_text(key: str, language: str = None, **kwargs) -> str
+获取翻译文本。
+'''
+        with open(api_doc, 'w', encoding='utf-8') as f:
+            f.write(content)
         self.logger.info(f"API文档已生成: {api_doc}")
     
     def _generate_architecture_docs(self, docs_path: Path) -> None:
-        """生成架构文档"""
+        """生成架构文档（写入真实内容）"""
         arch_doc = docs_path / "cross_cutting_architecture.md"
-        
-        # 这里可以添加自动生成架构文档的逻辑
+        content = '''# 横切关注点层架构设计文档
+
+## 概述
+横切关注点层（Cross-cutting Concerns Layer）是DDD架构中的基础设施层重要组成部分，提供应用程序的通用服务，包括日志、配置、安全、缓存、异常处理、验证、统计分析、国际化等。
+
+## 设计原则
+- 依赖倒置原则
+- 单一职责原则
+- 开闭原则
+- 接口隔离原则
+
+## 模块架构
+- logging/ 日志模块
+- configuration/ 配置模块
+- security/ 安全模块
+- cache/ 缓存模块
+- exception_handler/ 异常处理模块
+- validation/ 验证模块
+- analysis/ 统计分析模块
+- i18n/ 国际化模块
+
+## 依赖关系
+- 日志、配置为基础依赖
+- 其他模块可依赖日志、配置
+- 各模块通过接口抽象解耦
+
+## 扩展指南
+- 新增模块：新建目录+接口+实现+导出+测试
+- 扩展模块：接口加方法，类加实现，补测试
+- 自定义实现：继承接口，依赖注入
+'''
+        with open(arch_doc, 'w', encoding='utf-8') as f:
+            f.write(content)
         self.logger.info(f"架构文档已生成: {arch_doc}")
     
     def _generate_deployment_docs(self, docs_path: Path) -> None:
@@ -253,7 +360,7 @@ class CrossCuttingAutomation:
         """检查模块状态"""
         try:
             # 检查缓存状态
-            cache = get_cache()
+            cache = self.get_cache()
             cache.set("health_check", time.time(), ttl=60)
             
             # 检查配置状态
