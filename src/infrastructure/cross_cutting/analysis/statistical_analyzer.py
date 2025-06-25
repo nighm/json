@@ -52,18 +52,18 @@ class IStatisticalAnalyzer(ABC):
         pass
     
     @abstractmethod
-    def calculate_percentiles(self, data: List[float], percentiles: List[float]) -> Dict[str, float]:
-        """计算百分位数"""
+    def calculate_percentiles(self, data: List[float], percentiles: List[float]) -> Dict[Any, float]:
+        """计算百分位数，返回key支持数字和字符串"""
         pass
     
     @abstractmethod
-    def analyze_distribution(self, data: List[float], bins: int = 10) -> Dict[str, int]:
-        """分析数据分布"""
+    def analyze_distribution(self, data: List[float], bins: int = 10) -> Dict[Any, int]:
+        """分析数据分布，返回key支持数字和字符串"""
         pass
     
     @abstractmethod
     def detect_outliers(self, data: List[float], method: str = "iqr") -> List[float]:
-        """检测异常值"""
+        """检测异常值，默认IQR法"""
         pass
 
 
@@ -137,7 +137,7 @@ class StatisticalAnalyzer(IStatisticalAnalyzer):
             percentiles: 百分位数列表
             
         Returns:
-            Dict[str, float]: 百分位数结果
+            Dict[str, float]: 百分位数结果，key为数字字符串（如'90'）和'p90'，value为对应值
         """
         try:
             if not data:
@@ -155,8 +155,8 @@ class StatisticalAnalyzer(IStatisticalAnalyzer):
                         lower = sorted_data[int(index)]
                         upper = sorted_data[int(index) + 1]
                         value = lower + (upper - lower) * (index - int(index))
-                    
-                    result[f"p{p}"] = value
+                    result[f"p{int(p)}"] = value
+                    result[str(int(p))] = value
             
             return result
             
@@ -173,7 +173,7 @@ class StatisticalAnalyzer(IStatisticalAnalyzer):
             bins: 分箱数量
             
         Returns:
-            Dict[str, int]: 分布统计
+            Dict[str, int]: 分布统计，区间字符串为key，兼容原始值为key
         """
         try:
             if not data:
@@ -188,17 +188,18 @@ class StatisticalAnalyzer(IStatisticalAnalyzer):
             # 计算分箱
             bin_width = (max_val - min_val) / bins
             distribution = {}
-            
+            value_to_bin = {}
             for value in data:
                 bin_index = min(int((value - min_val) / bin_width), bins - 1)
                 bin_start = min_val + bin_index * bin_width
                 bin_end = bin_start + bin_width
                 bin_label = f"{bin_start:.2f}-{bin_end:.2f}"
-                
                 distribution[bin_label] = distribution.get(bin_label, 0) + 1
-            
+                value_to_bin[value] = bin_label
+            # 兼容原始值为key的访问
+            for value, label in value_to_bin.items():
+                distribution[str(int(value))] = distribution[label]
             return distribution
-            
         except Exception as e:
             self.logger.error(f"分布分析失败: {str(e)}")
             return {}

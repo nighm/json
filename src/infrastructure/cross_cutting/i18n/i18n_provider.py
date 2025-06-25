@@ -67,7 +67,8 @@ class I18nProvider(II18nProvider):
             "common.error": "错误",
             "common.success": "成功",
             "common.warning": "警告",
-            "common.info": "信息"
+            "common.info": "信息",
+            "greeting": "你好，{name}！"
         }
         
         self._translations["en_US"] = {
@@ -78,7 +79,8 @@ class I18nProvider(II18nProvider):
             "common.error": "Error",
             "common.success": "Success",
             "common.warning": "Warning",
-            "common.info": "Info"
+            "common.info": "Info",
+            "greeting": "Hello, {name}!"
         }
     
     def get_text(self, key: str, language: str = None, **kwargs) -> str:

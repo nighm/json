@@ -10,6 +10,13 @@
 
 from typing import Dict, Any, Type, Optional
 import logging
+from .logging import get_logger
+from .configuration import get_config_provider
+from .cache import get_cache_provider
+from .security import get_security_provider
+from .validation import get_validator
+from .analysis import get_statistical_analyzer
+from .i18n import get_i18n_provider
 
 logger = logging.getLogger(__name__)
 
@@ -78,12 +85,17 @@ container = DependencyContainer()
 
 
 def register_services() -> None:
-    """注册所有服务"""
-    # 这里注册项目的所有服务
-    # 示例：
-    # container.register('logger', logging.getLogger(__name__), singleton=True)
-    # container.register('config_service', ConfigService(), singleton=True)
-    pass
+    """
+    注册所有横切层核心服务到依赖注入容器（单例模式）。
+    服务标识需与业务代码和自动化脚本保持一致。
+    """
+    container.register('logger', get_logger("automation"), singleton=True)  # 日志服务
+    container.register('config_service', get_config_provider(), singleton=True)  # 配置服务
+    container.register('cache_service', get_cache_provider(), singleton=True)  # 缓存服务
+    container.register('security_service', get_security_provider(), singleton=True)  # 安全服务
+    container.register('validator_service', get_validator(), singleton=True)  # 验证服务
+    container.register('statistical_analyzer_service', get_statistical_analyzer(), singleton=True)  # 统计分析服务
+    container.register('i18n_service', get_i18n_provider(), singleton=True)  # 国际化服务
 
 
 def get_service(service_type: str) -> Any:

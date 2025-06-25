@@ -273,24 +273,28 @@ def validate_data(data: Any, rules: List[ValidationRule]) -> ValidationResult:
     return get_validator().validate(data, rules)
 
 
-def validate_email(email: str) -> ValidationResult:
-    """便捷函数：验证邮箱"""
-    email_rule = ValidationRule(
-        "email",
-        lambda x: re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', str(x)) is not None,
-        "邮箱格式不正确"
-    )
-    return get_validator().validate(email, [email_rule])
+def validate_email(value, *args, **kwargs):
+    """
+    邮箱格式校验。仅传value时返回bool，传更多参数时返回ValidationResult。
+    """
+    import re
+    pattern = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+    is_valid = bool(re.match(pattern, value))
+    if not args and not kwargs:
+        return is_valid
+    return ValidationResult(is_valid=is_valid, value=value)
 
 
-def validate_phone(phone: str) -> ValidationResult:
-    """便捷函数：验证手机号"""
-    phone_rule = ValidationRule(
-        "phone",
-        lambda x: re.match(r'^1[3-9]\d{9}$', str(x)) is not None,
-        "手机号格式不正确"
-    )
-    return get_validator().validate(phone, [phone_rule])
+def validate_phone(value, *args, **kwargs):
+    """
+    手机号格式校验。仅传value时返回bool，传更多参数时返回ValidationResult。
+    """
+    import re
+    pattern = r"^1[3-9]\d{9}$"
+    is_valid = bool(re.match(pattern, value))
+    if not args and not kwargs:
+        return is_valid
+    return ValidationResult(is_valid=is_valid, value=value)
 
 
 def validate_url(url: str) -> ValidationResult:

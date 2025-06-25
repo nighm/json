@@ -20,27 +20,62 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.infrastructure.cross_cutting import (
-    get_logger, get_config, get_cache_provider, get_security_provider,
-    get_validator, get_statistical_analyzer, get_i18n_provider
+    register_services, get_service
 )
 
 
 class CrossCuttingAutomation:
-    """横切关注点层自动化管理类"""
+    """
+    横切关注点层自动化管理类。
+
+    该类负责横切层（Cross-cutting Concerns Layer）的自动化管理，包括环境搭建、测试、配置验证、文档生成、系统监控、部署、备份等功能。
+    通过依赖注入获取各横切服务，统一管理和调用。
+    """
     
     def __init__(self):
-        self.logger = get_logger("automation")
+        """
+        初始化CrossCuttingAutomation实例，注册并获取所有横切层服务。
+
+        :raises Exception: 服务注册或依赖注入失败时抛出异常。
+        """
+        # 注册所有横切层服务
+        register_services()
+        # 通过依赖注入容器获取服务实例
+        self.logger = get_service('logger')  # 日志服务
+        self.config = get_service('config_service')  # 配置服务
+        self.cache = get_service('cache_service')  # 缓存服务
+        self.security = get_service('security_service')  # 安全服务
+        self.validator = get_service('validator_service')  # 验证服务
+        self.statistical_analyzer = get_service('statistical_analyzer_service')  # 统计分析服务
+        self.i18n = get_service('i18n_service')  # 国际化服务
+        # 其他路径属性
         self.project_root = Path(__file__).parent.parent
         self.config_path = self.project_root / "config"
         self.logs_path = self.project_root / "logs"
         self.cache_path = self.project_root / "cache"
         
     def get_cache(self):
-        """获取缓存实例"""
-        return get_cache_provider().get_cache()
+        """
+        获取缓存实例（兼容旧用法）。
+
+        :return: 缓存服务实例。
+        :rtype: object
+        """
+        return self.cache.get_cache() if hasattr(self.cache, 'get_cache') else self.cache
         
     def setup_environment(self) -> bool:
-        """设置运行环境"""
+        """
+        设置运行环境。
+
+        主要功能：
+            - 创建必要目录（logs、cache、config等）
+            - 检查Python版本和依赖包
+            - 输出日志
+
+        :return: 成功返回True，失败返回False。
+        :rtype: bool
+        :raises Exception: 环境设置失败时记录到日志，不抛出。
+        """
         try:
             self.logger.info("开始设置运行环境...")
             
@@ -88,7 +123,17 @@ class CrossCuttingAutomation:
             return False
     
     def run_tests(self, coverage: bool = True, verbose: bool = False) -> bool:
-        """运行测试"""
+        """
+        运行横切层相关的单元测试。
+
+        :param coverage: 是否生成覆盖率报告，默认为True。
+        :type coverage: bool
+        :param verbose: 是否输出详细测试信息，默认为False。
+        :type verbose: bool
+        :return: 测试全部通过返回True，否则返回False。
+        :rtype: bool
+        :raises Exception: 测试执行异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info("开始运行测试...")
             
@@ -129,12 +174,22 @@ class CrossCuttingAutomation:
             return False
     
     def validate_configuration(self) -> bool:
-        """验证配置"""
+        """
+        验证横切层配置的完整性和有效性。
+
+        主要功能：
+            - 检查必要配置项是否存在
+            - 验证各横切模块功能可用性
+
+        :return: 配置验证通过返回True，否则返回False。
+        :rtype: bool
+        :raises Exception: 配置验证异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info("开始验证配置...")
             
             # 验证横切关注点层配置
-            validator = get_validator()
+            validator = self.validator
             
             # 检查必要配置
             required_configs = [
@@ -147,7 +202,7 @@ class CrossCuttingAutomation:
             missing_configs = []
             for config_key in required_configs:
                 try:
-                    value = get_config(config_key)
+                    value = self.config.get(config_key) if hasattr(self.config, 'get') else None
                     if value is None:
                         missing_configs.append(config_key)
                 except Exception:
@@ -159,12 +214,12 @@ class CrossCuttingAutomation:
             
             # 验证各模块功能
             modules = [
-                ("日志模块", lambda: get_logger("test")),
+                ("日志模块", lambda: self.logger),
                 ("缓存模块", lambda: self.get_cache()),
-                ("安全模块", lambda: get_security_provider()),
-                ("验证模块", lambda: get_validator()),
-                ("统计分析模块", lambda: get_statistical_analyzer()),
-                ("国际化模块", lambda: get_i18n_provider())
+                ("安全模块", lambda: self.security),
+                ("验证模块", lambda: self.validator),
+                ("统计分析模块", lambda: self.statistical_analyzer),
+                ("国际化模块", lambda: self.i18n)
             ]
             
             for module_name, module_func in modules:
@@ -183,7 +238,18 @@ class CrossCuttingAutomation:
             return False
     
     def generate_documentation(self) -> bool:
-        """生成文档"""
+        """
+        生成横切层相关文档，包括API文档、架构文档、部署文档。
+
+        主要功能：
+            - 自动生成API接口文档
+            - 自动生成架构设计文档
+            - 自动生成部署说明文档
+
+        :return: 文档生成成功返回True，否则返回False。
+        :rtype: bool
+        :raises Exception: 文档生成异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info("开始生成文档...")
             
@@ -207,7 +273,13 @@ class CrossCuttingAutomation:
             return False
     
     def _generate_api_docs(self, docs_path: Path) -> None:
-        """生成API文档（写入真实内容）"""
+        """
+        生成API文档（写入真实内容）。
+
+        :param docs_path: 文档输出目录。
+        :type docs_path: Path
+        :return: 无返回值。
+        """
         api_doc = docs_path / "cross_cutting_api.md"
         content = '''# 横切关注点层 API 接口文档
 
@@ -287,7 +359,13 @@ class CrossCuttingAutomation:
         self.logger.info(f"API文档已生成: {api_doc}")
     
     def _generate_architecture_docs(self, docs_path: Path) -> None:
-        """生成架构文档（写入真实内容）"""
+        """
+        生成架构文档（写入真实内容）。
+
+        :param docs_path: 文档输出目录。
+        :type docs_path: Path
+        :return: 无返回值。
+        """
         arch_doc = docs_path / "cross_cutting_architecture.md"
         content = '''# 横切关注点层架构设计文档
 
@@ -325,14 +403,27 @@ class CrossCuttingAutomation:
         self.logger.info(f"架构文档已生成: {arch_doc}")
     
     def _generate_deployment_docs(self, docs_path: Path) -> None:
-        """生成部署文档"""
+        """
+        生成部署文档。
+
+        :param docs_path: 文档输出目录。
+        :type docs_path: Path
+        :return: 无返回值。
+        """
         deploy_doc = docs_path / "cross_cutting_deployment.md"
         
         # 这里可以添加自动生成部署文档的逻辑
         self.logger.info(f"部署文档已生成: {deploy_doc}")
     
     def monitor_system(self, duration: int = 300) -> None:
-        """监控系统状态"""
+        """
+        监控系统状态。
+
+        :param duration: 监控持续时间（秒），默认300秒。
+        :type duration: int
+        :return: 无返回值。
+        :raises Exception: 监控异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info(f"开始系统监控，持续{duration}秒...")
             
@@ -357,17 +448,22 @@ class CrossCuttingAutomation:
             self.logger.error(f"监控异常: {e}")
     
     def _check_module_status(self) -> None:
-        """检查模块状态"""
+        """
+        检查横切层各模块运行状态。
+
+        :return: 无返回值。
+        :raises Exception: 检查失败时记录到日志，不抛出。
+        """
         try:
             # 检查缓存状态
             cache = self.get_cache()
             cache.set("health_check", time.time(), ttl=60)
             
             # 检查配置状态
-            log_level = get_config("logging.level", "INFO")
+            log_level = self.config.get("logging.level", "INFO") if hasattr(self.config, 'get') else "INFO"
             
             # 检查安全模块
-            security = get_security_provider()
+            security = self.security
             
             self.logger.debug("模块状态检查完成")
             
@@ -375,7 +471,12 @@ class CrossCuttingAutomation:
             self.logger.error(f"模块状态检查失败: {e}")
     
     def _check_system_resources(self) -> None:
-        """检查系统资源"""
+        """
+        检查系统资源（CPU、内存、磁盘等）。
+
+        :return: 无返回值。
+        :raises Exception: 检查失败时记录到日志，不抛出。
+        """
         try:
             import psutil
             
@@ -398,7 +499,15 @@ class CrossCuttingAutomation:
             self.logger.error(f"系统资源检查失败: {e}")
     
     def deploy(self, environment: str = "development") -> bool:
-        """部署应用"""
+        """
+        部署横切层服务。
+
+        :param environment: 部署环境（development/production），默认development。
+        :type environment: str
+        :return: 部署成功返回True，否则返回False。
+        :rtype: bool
+        :raises Exception: 部署异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info(f"开始部署到{environment}环境...")
             
@@ -434,7 +543,12 @@ class CrossCuttingAutomation:
             return False
     
     def _deploy_development(self) -> bool:
-        """部署到开发环境"""
+        """
+        开发环境部署逻辑。
+
+        :return: 部署成功返回True，否则返回False。
+        :rtype: bool
+        """
         try:
             self.logger.info("部署到开发环境...")
             
@@ -448,7 +562,12 @@ class CrossCuttingAutomation:
             return False
     
     def _deploy_production(self) -> bool:
-        """部署到生产环境"""
+        """
+        生产环境部署逻辑。
+
+        :return: 部署成功返回True，否则返回False。
+        :rtype: bool
+        """
         try:
             self.logger.info("部署到生产环境...")
             
@@ -462,7 +581,13 @@ class CrossCuttingAutomation:
             return False
     
     def backup_config(self) -> bool:
-        """备份配置"""
+        """
+        备份横切层配置。
+
+        :return: 备份成功返回True，否则返回False。
+        :rtype: bool
+        :raises Exception: 备份异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info("开始备份配置...")
             
@@ -492,7 +617,15 @@ class CrossCuttingAutomation:
             return False
     
     def restore_config(self, backup_path: str) -> bool:
-        """恢复配置"""
+        """
+        恢复横切层配置。
+
+        :param backup_path: 备份文件路径。
+        :type backup_path: str
+        :return: 恢复成功返回True，否则返回False。
+        :rtype: bool
+        :raises Exception: 恢复异常时记录到日志，不抛出。
+        """
         try:
             self.logger.info(f"开始恢复配置: {backup_path}")
             

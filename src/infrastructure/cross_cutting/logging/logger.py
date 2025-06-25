@@ -228,29 +228,35 @@ class ApplicationLogger(ILogger):
         
         return logger
     
-    def debug(self, message: str, **kwargs):
-        """记录调试级别日志"""
-        self.logger.debug(message, extra=kwargs)
+    def debug(self, message: str, *args, **kwargs):
+        if args:
+            message = message % args
+        self.logger.debug(message, **kwargs)
     
-    def info(self, message: str, **kwargs):
-        """记录信息级别日志"""
-        self.logger.info(message, extra=kwargs)
+    def info(self, message: str, *args, **kwargs):
+        if args:
+            message = message % args
+        self.logger.info(message, **kwargs)
     
-    def warning(self, message: str, **kwargs):
-        """记录警告级别日志"""
-        self.logger.warning(message, extra=kwargs)
+    def warning(self, message: str, *args, **kwargs):
+        if args:
+            message = message % args
+        self.logger.warning(message, **kwargs)
     
-    def error(self, message: str, **kwargs):
-        """记录错误级别日志"""
-        self.logger.error(message, extra=kwargs)
+    def error(self, message: str, *args, **kwargs):
+        if args:
+            message = message % args
+        self.logger.error(message, **kwargs)
     
-    def critical(self, message: str, **kwargs):
-        """记录严重错误级别日志"""
-        self.logger.critical(message, extra=kwargs)
+    def critical(self, message: str, *args, **kwargs):
+        if args:
+            message = message % args
+        self.logger.critical(message, **kwargs)
     
-    def log(self, level: LogLevel, message: str, **kwargs):
-        """记录指定级别的日志"""
-        self.logger.log(level.value, message, extra=kwargs)
+    def log(self, level: LogLevel, message: str, *args, **kwargs):
+        if args:
+            message = message % args
+        self.logger.log(level.value, message, **kwargs)
 
 
 # 便捷函数
